@@ -8,8 +8,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	随便显示： ${jdbc }
-	<hr /> 
+	留言信息：<br />
+	<c:forEach var="message" items="${messages}" varStatus="num">
+		<span>${num.count}</span> - <span>${message.title}</span> - <span>${message.content}</span> - <span>${num.index}</span><br />
+	</c:forEach>
+	<hr />
 	<form action="msgbook.do" method="post">
 		<label for="msgtitle">主题</label>
 		<input type="text" id="msgtitle" name="msgtitle"><br />

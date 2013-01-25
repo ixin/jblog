@@ -1,22 +1,22 @@
 package mx.meido.jblog.msgbook.service.impl;
 
 import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import java.util.Map;
 
 import mx.meido.jblog.msgbook.dao.MsgBookDao;
 import mx.meido.jblog.msgbook.model.Message;
 import mx.meido.jblog.msgbook.service.MsgBookService;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 @Service("msgBookService")
 public class MsgBookServiceImpl implements MsgBookService {
 	@Autowired
 	private MsgBookDao msgBookDao;
 
 	@Override
-	public List<Message> getMsgs() {
+	public List<Map<String, Object>> getMsgs() {
 		return msgBookDao.getMsgs();
-		//return null;
 	}
 
 	@Override

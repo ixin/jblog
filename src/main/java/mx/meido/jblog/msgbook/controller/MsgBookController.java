@@ -21,7 +21,7 @@ public class MsgBookController {
 	
 	@RequestMapping(value="/msgbook.html", method=RequestMethod.GET)
 	public String showMsgBook(ModelMap model){
-		model.addAttribute("jdbc", msgBookService.getMsgs());
+		model.addAttribute("messages", msgBookService.getMsgs());
 		return "msgbook";
 	}
 	
@@ -34,7 +34,7 @@ public class MsgBookController {
 		msg.setContent(msgContent);
 
 		if(msgBookService.saveMsg(msg) > 0){
-			return "msgbook";
+			return "redirect:/msgbook.html";
 		}
 		return "redirect:/msgbook.html";
 	}
