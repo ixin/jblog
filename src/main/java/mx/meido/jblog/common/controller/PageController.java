@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class PageController {
-	@RequestMapping(value="/frameMain.html")
+	@RequestMapping(value="/admin/frameMain.html")
 	public String showFrameMain(){
 		return "frameMain";
 	}

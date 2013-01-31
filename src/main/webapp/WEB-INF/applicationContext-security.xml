@@ -6,9 +6,11 @@
 
 
 	<debug />
-
+	<http pattern="/script/**" security="none"/>
+    <http pattern="/style/**" security="none"/>
 	<http auto-config="true">
-		<form-login login-page="/login.html" authentication-failure-url="/login.html?error=true" default-target-url="/frameMain.html" />
+	    <intercept-url pattern="/admin/**" access="ROLE_USER"/>
+		<form-login login-page="/login.html" authentication-failure-url="/login.html?error=true" default-target-url="/admin/frameMain.html" />
 	</http>
 
 	<!-- Usernames/Passwords are rod/koala dianne/emu scott/wombat peter/opal -->
@@ -21,7 +23,7 @@
 			<user-service>
 				<user name="rod"
 					password="4efe081594ce25ee4efd9f7067f7f678a347bccf2de201f3adf2a3eb544850b465b4e51cdc3fcdde"
-					authorities="supervisor, user, teller" />
+					authorities="ROLE_USER" />
 				<user name="dianne"
 					password="957ea522524a41cbfb649a3e293d56268f840fd5b661b499b07858bc020d6d223f912e3ab303b00f"
 					authorities="user,teller" />
