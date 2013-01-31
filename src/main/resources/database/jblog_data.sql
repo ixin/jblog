@@ -1,1 +1,13 @@
 insert into jb_sys values('productionName', 'jblog');
+insert into authority values(1, 'ROLE_Auth1');
+insert into authority values(2, 'ROLE_Auth2');
+insert into authority values(3, 'ROLE_Auth3');
+insert into authority values(4, 'ROLE_Auth4');
+insert into authority values(5, 'ROLE_Auth5');
+insert into role values(1, 'USER', '用户角色');
+insert into role values(2, 'AUTHOR', '作者角色');
+insert into role_auth values(1, 1);
+insert into role_auth values(2, 1);
+insert into role_auth values(2, 2);
+insert into role_auth values(2, 3);
+insert into userinfo values(1, 'xinglie', '96e79218965eb72c92a549dd5a330112', '星烈', 'i@ixin.com', 'http://ixin.me', '2012-1-1', 1, 1, 1, 1, 1);

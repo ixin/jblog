@@ -14,6 +14,12 @@
  	<bean id="msgBookDao" class="mx.meido.jblog.msgbook.dao.impl.MsgBookDaoImpl">
 	    <property name="dataSource" ref="dataSource"></property>
 	</bean>
+ 	<bean id="roleDao" class="mx.meido.jblog.security.dao.impl.RoleDaoImpl">
+	    <property name="dataSource" ref="dataSource"></property>
+	</bean>
+ 	<bean id="userInfoDao" class="mx.meido.jblog.user.dao.impl.UserInfoDaoImpl">
+	    <property name="dataSource" ref="dataSource"></property>
+	</bean>
 	
 	<!-- 视图解析器  -->
     <bean id="viewResolver"
