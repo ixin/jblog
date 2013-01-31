@@ -19,7 +19,7 @@
 			<dt></dt>
 			<dd>
 				<ul>
-					<li> 当前用户：<strong>admin</strong><span>[<a title="注销登陆" class="hand" href="../j_spring_security_logout">退出</a>] [<span id="enterDc" style="padding:0px"><a title="查看首页" href="${ctxPath}" >查看首页</a></span>]</span> </li>
+					<li> 当前用户：<strong><sec:authentication property="name" /></strong><span>[<a title="注销登陆" class="hand" href="../j_spring_security_logout">退出</a>] [<span id="enterDc" style="padding:0px"><a title="查看首页" href="${ctxPath}" >查看首页</a></span>]</span> </li>
 				</ul>
 			</dd>
 		</dl>
@@ -50,8 +50,7 @@
 			</div>
 			<div title="用户管理" data-options="" style="padding:10px;font-size:14px;">
 				<ul id="tt2" class="easyui-tree topMenuUl" data-options="animate:true,dnd:false,title:'用户管理'">
-					<li>添加文章</li>
-					<li>查看文章</li>
+					<li><a href="userManagementList.html" tabtitle="所有用户" >所有用户</a></li>
 				</ul>
 			</div>
 			<div title="系统设置" data-options="" style="padding:10px;font-size:14px;">

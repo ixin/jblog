@@ -9,18 +9,20 @@
 	<http pattern="/script/**" security="none"/>
     <http pattern="/style/**" security="none"/>
 	<http auto-config="true">
-	    <intercept-url pattern="/admin/**" access="ROLE_USER"/>
+	    <intercept-url pattern="/admin/**" access="ROLE_Auth1"/>
 		<form-login login-page="/login.html" authentication-failure-url="/login.html?error=true" default-target-url="/admin/frameMain.html" />
 	</http>
 
 	<!-- Usernames/Passwords are rod/koala dianne/emu scott/wombat peter/opal -->
 	<beans:bean id="encoder"
 		class="org.springframework.security.crypto.password.StandardPasswordEncoder" />
+	<beans:bean id="md5Encoder"
+		class="org.springframework.security.authentication.encoding.Md5PasswordEncoder" />
 
 	<authentication-manager>
-		<authentication-provider>
-			<password-encoder ref="encoder" />
-			<user-service>
+		<authentication-provider user-service-ref="userInfoService">
+			<password-encoder ref="md5Encoder" />
+			<!-- <user-service>
 				<user name="rod"
 					password="4efe081594ce25ee4efd9f7067f7f678a347bccf2de201f3adf2a3eb544850b465b4e51cdc3fcdde"
 					authorities="ROLE_USER" />
@@ -33,8 +35,10 @@
 				<user name="peter"
 					password="e175750688deee19d7179d444bfaf92129f4eea8b4503d83eb8f92a7dd9cda5fbae73638c913e420"
 					authorities="user" />
-			</user-service>
+			</user-service> -->
 		</authentication-provider>
 	</authentication-manager>
-
+<!-- 	<beans:bean id="roleVoter" class="org.springframework.security.vote.RoleVoter">
+    	<beans:property name="rolePrefix" value="AUTH_"/>  
+	</beans:bean> -->
 </beans:beans>

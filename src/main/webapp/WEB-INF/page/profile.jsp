@@ -108,7 +108,7 @@
 		<footer>
 			<p>
 				© <a href="https://github.com/ixin/jblog">JBLOG</a>
-				2013  由 <a href="http://ixin.me">ixin.me</a> and <a href="http://meido.mx">meido.mx</a> 提供.
+				2013  由 <a href="http://ixin.me">ixin.me</a> & <a href="http://meido.mx">meido.mx</a> 提供.
 			</p>
 		</footer>
 	</div>
