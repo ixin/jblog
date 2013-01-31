@@ -50,8 +50,7 @@
 			</div>
 			<div title="用户管理" data-options="" style="padding:10px;font-size:14px;">
 				<ul id="tt2" class="easyui-tree topMenuUl" data-options="animate:true,dnd:false,title:'用户管理'">
-					<li>添加文章</li>
-					<li>查看文章</li>
+					<li><a href="userManagementList.html" tabtitle="所有用户" >所有用户</a></li>
 				</ul>
 			</div>
 			<div title="系统设置" data-options="" style="padding:10px;font-size:14px;">
