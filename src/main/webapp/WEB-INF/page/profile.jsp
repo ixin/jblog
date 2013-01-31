@@ -31,19 +31,19 @@
 					</ul>
 					<ul class="nav pull-right">
 						<c:choose>
-							<c:when test="${ 1==1}">
+							<c:when test="${empty sessionScope.u}">
 								<li><a href="#" data-toggle="modal" data-target="#myLoginModal">登录</a></li>
 							</c:when>
 							<c:otherwise>
-								<li><a href="setting.html" class="hidden-phone visible-tablet visible-desktop" >设置</a></li>
+								<li><a href="admin/frameMain.html" class="hidden-phone visible-tablet visible-desktop" >设置</a></li>
 								<li id="fat-menu" class="dropdown">
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user"></i> 小辛 <i class="icon-caret-down"></i></a>
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user"></i><sec:authentication property="name"/><i class="icon-caret-down"></i></a>
 									<ul class="dropdown-menu">
-										<li><a tabindex="-1" href="#">我的账户</a></li>
+										<li><a tabindex="-1" href="admin/frameMain.html">我的账户</a></li>
 										<li class="divider"></li>
-										<li><a tabindex="-1" class="visible-phone" href="setting.html">设置</a></li>
+										<li><a tabindex="-1" class="visible-phone" href="admin/frameMain.html">设置</a></li>
 										<li class="divider visible-phone"></li>
-										<li><a tabindex="-1" href="sign-in.html">注销</a></li> 
+										<li><a tabindex="-1" href="j_spring_security_logout">注销</a></li> 
 									</ul>
 								</li>
 							</c:otherwise>

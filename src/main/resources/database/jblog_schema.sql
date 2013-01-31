@@ -7,3 +7,15 @@ create table message(
 	title varchar(50),
 	content varchar(500)
 );
+create table sys_role(
+	id int primary key,
+	
+)
+create table sys_authority(
+	id int primary key,
+	
+)
+create table userinfo(
+	id varchar(36) primary key,
+	
+)

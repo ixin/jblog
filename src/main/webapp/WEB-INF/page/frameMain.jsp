@@ -19,7 +19,7 @@
 			<dt></dt>
 			<dd>
 				<ul>
-					<li> 当前用户：<strong>admin</strong><span>[<a title="注销登陆" class="hand" href="j_spring_security_logout">退出</a>] [<span id="enterDc" style="padding:0px"><a onclick="openTab(this);return false;" title="个人信息修改" target="_blank" href="admin.do" tabtitle="个人信息修改" >个人信息修改</a></span>]</span> </li>
+					<li> 当前用户：<strong>admin</strong><span>[<a title="注销登陆" class="hand" href="../j_spring_security_logout">退出</a>] [<span id="enterDc" style="padding:0px"><a title="查看首页" href="${ctxPath}" >查看首页</a></span>]</span> </li>
 				</ul>
 			</dd>
 		</dl>
