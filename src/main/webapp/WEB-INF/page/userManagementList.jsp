@@ -24,7 +24,7 @@ $(document).ready(function(){
 		fitColumns: true,
 		loadMsg: "正在加载，请稍候...",
 		singleSelect: true,
-		url: "#",
+		url: "userManagementList.do",
 		loadFilter: function(data){
 			var n = eval(data);
 			district = n.district;
