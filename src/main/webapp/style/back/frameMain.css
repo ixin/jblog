@@ -1,0 +1,15 @@
+*{font-size:12px;}
+body {font-family:helvetica,tahoma,verdana,sans-serif;padding:20px;font-size:13px;margin:0;}
+h2 {font-size:18px;font-weight:bold;margin:0;margin-bottom:15px;}
+.head dl, .head dt, .head dd, .head ul, .head li {list-style: none outside none;margin: 0;padding: 0;}
+.head {background: url("../imagesBack/top_bj.jpg") repeat-x scroll 0 0 transparent;height: 60px;min-width: 500px;width: 100%;}
+.head dl {/* background: url("../imagesBack/top_logo_bj.jpg") no-repeat scroll left 0 transparent; */height: 55px;}
+.head dt {float: left;font-family: Verdana,Geneva,sans-serif;height: 35px;padding-left: 170px;padding-top: 19px;}
+.head dd {/*  background: url("../imagesBack/top_logo_bj.jpg") no-repeat scroll right bottom transparent; */color: #FFFFFF;float: right;height: 60px;padding: 0 10px 0 0;text-align: right;}
+.head dd ul {/* background: url("../imagesBack/top_right_bj.jpg") no-repeat scroll left center transparent; */height: 22px;margin-top: 15px;padding: 0 0 0 20px;} 
+.head dd li {height: 22px;line-height: 22px;padding: 0 10px 0 0;}
+.head dd strong {color: #FFCC00;font-family: Verdana,Geneva,sans-serif;padding: 0 5px 0 0;}
+.head dd span, .head dd span a {color: #DFDFDF;padding: 0 5px;}
+.head a:link, .head a:visited {color: #888888;text-decoration: none;}
+.head a:hover, .head a:active {color: #FFCC3C;text-decoration: none;}
+.head strong {font-weight: bold;}
