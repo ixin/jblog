@@ -38,5 +38,7 @@
 			</user-service> -->
 		</authentication-provider>
 	</authentication-manager>
-
+<!-- 	<beans:bean id="roleVoter" class="org.springframework.security.vote.RoleVoter">
+    	<beans:property name="rolePrefix" value="AUTH_"/>  
+	</beans:bean> -->
 </beans:beans>
