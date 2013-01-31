@@ -8,7 +8,7 @@
 	<debug />
 
 	<http auto-config="true">
-		<form-login login-page="/login.jsp" authentication-failure-url="/login.jsp?error=true" default-target-url="/frameMain.html" />
+		<form-login login-page="/login.html" authentication-failure-url="/login.html?error=true" default-target-url="/frameMain.html" />
 	</http>
 
 	<!-- Usernames/Passwords are rod/koala dianne/emu scott/wombat peter/opal -->

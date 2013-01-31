@@ -9,5 +9,13 @@ public class PageController {
 	public String showFrameMain(){
 		return "frameMain";
 	}
+	@RequestMapping(value="/profile.html")
+	public String showProfile(){
+		return "profile";
+	}
+	@RequestMapping(value="/login.html")
+	public String showLogin(){
+		return "login";
+	}
 
 }
