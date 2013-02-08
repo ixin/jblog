@@ -8,7 +8,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import mx.meido.jblog.common.tools.JsonDateToStringProcessorImpl;
+import mx.meido.jblog.common.tools.JsonDateValueProcessor;
 import mx.meido.jblog.user.model.UserInfo;
 import mx.meido.jblog.user.service.UserInfoService;
 import net.sf.json.JSONArray;
@@ -53,7 +53,7 @@ public class UserManageController {
 		List<Map<String, Object>> total = userInfoService.getUserInfos(userinfo,  (currPage - 1) * resultCountPerPage  , resultCountPerPage);
 		Integer rows = userInfoService.getUserInfosCount(userinfo);
 		JsonConfig config = new JsonConfig();
-		config.registerJsonValueProcessor(java.util.Date.class, new JsonDateToStringProcessorImpl());
+		config.registerJsonValueProcessor(java.util.Date.class, new JsonDateValueProcessor());
 		jsonObj.put("total", JSONArray.fromObject(total, config));
 		jsonObj.put("rows", rows);
 	}

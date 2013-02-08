@@ -1,6 +1,5 @@
 package mx.meido.jblog.user.dao.impl;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -37,7 +36,7 @@ public class UserInfoDaoImpl extends JdbcDaoSupport implements UserInfoDao{
 	@Override
 	public List<Map<String, Object>> getUserInfos(UserInfo userinfo, int fromResultCount,
 			int resultCountPerPage) {
-		StringBuffer sb = new StringBuffer("select * from userinfo ui where 1 = 1 ");
+		StringBuffer sb = new StringBuffer("select ui.id, ui.username, ui.nickname, ui.email, ui.url, ui.registered, ui.isaccountnonexpired, ui.isaccountnonlocked, ui.iscredentialsNonExpired, ui.isenabled from userinfo ui where 1 = 1 ");
 		int paramsSize = 0;
 		if(StringUtils.isNotBlank(userinfo.getUsername())){
 			sb.append(" and ui.username = ? ");
