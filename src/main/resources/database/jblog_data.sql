@@ -10,4 +10,5 @@ insert into role_auth values(1, 1);
 insert into role_auth values(2, 1);
 insert into role_auth values(2, 2);
 insert into role_auth values(2, 3);
-insert into userinfo values(1, 'xinglie', '96e79218965eb72c92a549dd5a330112', '星烈', 'i@ixin.com', 'http://ixin.me', '2012-1-1', 1, 1, 1, 1, 1);
+insert into userinfo values(1, 'xinglie', '96e79218965eb72c92a549dd5a330112', '星烈', 'i@ixin.com', 'http://ixin.me', now(), 1, 1, 1, 1, 1);
+insert into userinfo values(2, 'test1', 'e3ceb5881a0a1fdaad01296d7554868d', '测试1', 'i@ixin.com', 'http://ixin.me', now(), 1, 1, 1, 1, 1);

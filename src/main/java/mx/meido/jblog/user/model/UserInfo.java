@@ -21,7 +21,7 @@ public class UserInfo implements UserDetails,Serializable{
 	private String nickname;
 	private String email;
 	private String url;
-	private Date registered;
+	private java.util.Date registered;
 	private boolean isAccountNonExpired;
 	private boolean isAccountNonLocked;
 	private boolean isCredentialsNonExpired;
@@ -124,11 +124,11 @@ public class UserInfo implements UserDetails,Serializable{
 		this.url = url;
 	}
 
-	public Date getRegistered() {
+	public java.util.Date getRegistered() {
 		return registered;
 	}
 
-	public void setRegistered(Date registered) {
+	public void setRegistered(java.util.Date registered) {
 		this.registered = registered;
 	}
 
@@ -138,7 +138,7 @@ public class UserInfo implements UserDetails,Serializable{
 
 	public UserInfo(String username, String password, Role role,
 			Set<SimpleGrantedAuthority> authorities, String nickname,
-			String email, String url, Date registered,
+			String email, String url, java.util.Date registered,
 			boolean isAccountNonExpired, boolean isAccountNonLocked,
 			boolean isCredentialsNonExpired, boolean isEnabled) {
 		super();
