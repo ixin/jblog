@@ -1,6 +1,7 @@
 package mx.meido.jblog.user.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import mx.meido.jblog.user.model.UserInfo;
 
@@ -29,4 +30,10 @@ public interface UserInfoDao {
 	 * @return
 	 */
 	public int getUserInfosCount(UserInfo userinfo);
+	
+	public String getRoleNameByRoleID(int roleId);
+	
+	public int getPostCountByUsername(String username);
+	
+	public Map getUserInfoByID(int id);
 }

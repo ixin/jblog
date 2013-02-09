@@ -1,6 +1,7 @@
 package mx.meido.jblog.user.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -27,6 +28,10 @@ public class UserInfoServiceImpl implements UserInfoService{
 	@Override
 	public int getUserInfosCount(UserInfo userinfo) {
 		return userInfoDao.getUserInfosCount(userinfo);
+	}
+	@Override
+	public Map getUserInfoByID(int id) {
+		return userInfoDao.getUserInfoByID(id);
 	}
 
 }

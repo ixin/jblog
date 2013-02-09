@@ -1,6 +1,7 @@
 package mx.meido.jblog.user.service;
 
 import java.util.List;
+import java.util.Map;
 
 import mx.meido.jblog.user.model.UserInfo;
 
@@ -21,4 +22,6 @@ public interface UserInfoService extends UserDetailsService{
 	 * @return
 	 */
 	public int getUserInfosCount(UserInfo userinfo);
+	
+	public Map getUserInfoByID(int id);
 }

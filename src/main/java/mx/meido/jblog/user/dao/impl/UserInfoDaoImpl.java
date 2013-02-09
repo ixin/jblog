@@ -36,7 +36,7 @@ public class UserInfoDaoImpl extends JdbcDaoSupport implements UserInfoDao{
 	@Override
 	public List<Map<String, Object>> getUserInfos(UserInfo userinfo, int fromResultCount,
 			int resultCountPerPage) {
-		StringBuffer sb = new StringBuffer("select ui.id, ui.username, ui.nickname, ui.email, ui.url, ui.registered, ui.isaccountnonexpired, ui.isaccountnonlocked, ui.iscredentialsNonExpired, ui.isenabled from userinfo ui where 1 = 1 ");
+		StringBuffer sb = new StringBuffer("select * from userinfo ui where 1 = 1 ");
 		int paramsSize = 0;
 		if(StringUtils.isNotBlank(userinfo.getUsername())){
 			sb.append(" and ui.username = ? ");
@@ -59,7 +59,13 @@ public class UserInfoDaoImpl extends JdbcDaoSupport implements UserInfoDao{
 			params[paramsSize] = userinfo.getUsername();
 		}
 		//执行查询
-		return this.getJdbcTemplate().queryForList(sb.toString(), params);
+		List<Map<String, Object>> list = this.getJdbcTemplate().queryForList(sb.toString(), params);
+		//此处麻烦了。。。
+		for(Map<String, Object> map : list){
+			map.put("ROLEID",this.getRoleNameByRoleID(Integer.valueOf(map.get("ROLEID").toString())));//借用roleid，填充角色名
+			map.put("REGISTERED", new java.util.Date(((java.sql.Date)(map.get("REGISTERED"))).getTime()));
+		}
+		return list;
 	}
 	@Override
 	public int getUserInfosCount(UserInfo userinfo) {
@@ -73,7 +79,6 @@ public class UserInfoDaoImpl extends JdbcDaoSupport implements UserInfoDao{
 			sb.append(" and ui.email = ? ");
 			paramsSize ++;
 		}
-		//sb.append(" order by ui.registered ");
 		//初始化参数数组
 		Object[] params = new Object[paramsSize];
 		//逆序设置参数值
@@ -87,6 +92,25 @@ public class UserInfoDaoImpl extends JdbcDaoSupport implements UserInfoDao{
 		}
 		//执行查询
 		return this.getJdbcTemplate().queryForInt(sb.toString(), params);
+	}
+	@Override
+	public String getRoleNameByRoleID(int roleId) {
+		String sql = "select rolename from role where id = ?";
+		return this.getJdbcTemplate().queryForMap(sql, new Object[]{roleId}).get("ROLENAME").toString();
+	}
+	@Override
+	public int getPostCountByUsername(String username) {
+		//TODO 表名 。。。文章表
+		String sql = "select count(*) from post where username = ?";
+		return this.getJdbcTemplate().queryForInt(sql, new Object[]{username});
+	}
+	@Override
+	public Map getUserInfoByID(int id) {
+		String sql = "select * from userinfo where id = ?";
+		Map<String, Object> map = this.getJdbcTemplate().queryForMap(sql, new Object[]{id});
+		map.put("REGISTERED", new java.util.Date(((java.sql.Date)(map.get("REGISTERED"))).getTime()));
+		map.put("ROLEID",this.getRoleNameByRoleID(Integer.valueOf(map.get("ROLEID").toString())));//借用roleid，填充角色名
+		return map;
 	}
 	
 }

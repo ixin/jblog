@@ -2,13 +2,13 @@ package mx.meido.jblog.user.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import mx.meido.jblog.common.tools.JsonDateValueProcessor;
 import mx.meido.jblog.user.model.UserInfo;
 import mx.meido.jblog.user.service.UserInfoService;
 import net.sf.json.JSONArray;
@@ -40,6 +40,11 @@ public class UserManageController {
 		return null;
 	}
 	
+	@RequestMapping(value="/admin/userManagementView.html", method=RequestMethod.GET)
+	public String showUserManagementView(){
+		return "userManagementView";
+	}
+	
 	public void doSearch(JSONObject jsonObj, HttpServletRequest request){
 		String pageNum = request.getParameter("page");
 		String rowsNum = request.getParameter("rows");
@@ -50,11 +55,9 @@ public class UserManageController {
 		UserInfo userinfo = new UserInfo();
 		userinfo.setUsername(username);
 		userinfo.setEmail(email);
-		List<Map<String, Object>> total = userInfoService.getUserInfos(userinfo,  (currPage - 1) * resultCountPerPage  , resultCountPerPage);
-		Integer rows = userInfoService.getUserInfosCount(userinfo);
-		JsonConfig config = new JsonConfig();
-		config.registerJsonValueProcessor(java.util.Date.class, new JsonDateValueProcessor());
-		jsonObj.put("total", JSONArray.fromObject(total, config));
+		List<Map<String, Object>> rows = userInfoService.getUserInfos(userinfo,  (currPage - 1) * resultCountPerPage  , resultCountPerPage);
+		Integer total = userInfoService.getUserInfosCount(userinfo);
+		jsonObj.put("total", total);
 		jsonObj.put("rows", rows);
 	}
 }

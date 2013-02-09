@@ -8,13 +8,14 @@
 	<span style="margin-left:20px;margin-right:4px;">用户名：</span><input
 		id="${pageName }username" class="combo-textl" maxlength="18"
 		style="border:1px solid #A4BED4;width:150px;" />
+	<span style="margin-left:20px;margin-right:4px;">Email：</span><input
+		id="${pageName }email" class="combo-textl" maxlength="50"
+		style="border:1px solid #A4BED4;width:150px;margin-right:10px;" />
 	<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'"
 		onclick="${pageName }reloadDataGridWithSearchValue();">查询</a>
 </div>
 <script type="text/javascript">
-// http://www.phptogether.com/juidoc/datagrid.html
 $(document).ready(function(){
-	var district;
     $("#${pageName}datagrid").datagrid({
 		nowrap: false,
 		striped: true,
@@ -31,14 +32,14 @@ $(document).ready(function(){
 			return data;
 		},
 		columns:[[
-			{field:"username",title:"用户名",align:"center",width:100},
-			{field:"nickname",title:"昵称",align:"center",width:100},
-			{field:"email",title:"电子邮件",align:"center",width:100},
-			{field:"role",title:"角色",align:"center",width:100},
-			{field:"post",title:"文章",align:"center",width:100},
-			{field:"id",title:"操作",align:"center",width:150,
+			{field:"USERNAME",title:"用户名",align:"center",width:150},
+			{field:"NICKNAME",title:"昵称",align:"center",width:150},
+			{field:"EMAIL",title:"电子邮件",align:"center",width:150},
+			{field:"ROLEID",title:"角色",align:"center",width:80},
+			{field:"POST",title:"文章数",align:"center",width:60},
+			{field:"ID",title:"操作",align:"center",width:100,
 				formatter: function(value,rowData,rowIndex){
-					return "<a href='#?sid=" + value + "' onclick='javascript:openWindow(this);return false;' windowtitle='查看' dataoption='{top:100}' ><span style='color:#03C;'>查看</span></a>";
+					return "<a href='userManagementView.html?sid=" + value + "' onclick='javascript:openWindow(this);return false;' windowtitle='查看个人资料' dataoption='{top:20}' ><span style='color:#03C;'>查看</span></a>";
 				}
 			}
 		]],
