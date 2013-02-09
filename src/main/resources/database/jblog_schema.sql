@@ -11,15 +11,15 @@ create table role(
 	id int primary key,
 	rolename varchar(30) not null,
 	roledescrition varchar(50)
-)
+);
 create table authority(
 	id int primary key,
 	authorityname varchar(30) not null
-)
+);
 create table role_auth(
 	roleid int,
 	authid int
-)
+);
 create table userinfo(
 	id int primary key,
 	username varchar(60) unique,
@@ -33,4 +33,13 @@ create table userinfo(
 	isaccountnonlocked int,
 	iscredentialsNonExpired int,
 	isenabled int
-)
+);
+create table post(
+	id bigint identity,
+	postuser varchar(60),
+	title varchar(200),
+	content text,
+	summary varchar(1000),
+	postTime timestamp,
+	postStage varchar(20)
+);
