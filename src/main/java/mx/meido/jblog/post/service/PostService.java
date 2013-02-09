@@ -28,6 +28,6 @@ public class PostService {
 		pr.changePostStage(post);
 	}
 	public List<Post> getPostFromAndLimitWithTimeDesc(long from, int limit){
-		return pr.getPostFromAndLimitWithTimeDesc(from, limit, PostStage.PUBLIC.getStage());
+		return pr.getPostFromAndLimitWithTimeDesc(from, limit, PostStage.PUBLISH.getStage());
 	}
 }

@@ -19,7 +19,7 @@ public class PostStatus {
 	}
 	
 	public static enum PostStage{
-		PUBLIC("public"), DRAFT("draft");
+		PUBLISH("publish"), DRAFT("draft");
 
 		private String stage;
 		public String getStage() {
