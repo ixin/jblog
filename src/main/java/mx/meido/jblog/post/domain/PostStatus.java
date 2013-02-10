@@ -1,8 +1,9 @@
 package mx.meido.jblog.post.domain;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
-public class PostStatus {
+public class PostStatus implements Serializable{
 	private HashMap<String, String> postMeta;
 	private PostStage postStage;
 	public HashMap<String, String> getPostMeta() {

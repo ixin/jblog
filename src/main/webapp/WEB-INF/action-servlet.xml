@@ -8,7 +8,7 @@
 						http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 	
 	<!-- 自动扫描 -->
-	<context:component-scan base-package="mx.meido.jblog.*.controller,mx.meido.jblog.**.impl"/>
+	<context:component-scan base-package="mx.meido.jblog.*.controller,mx.meido.jblog.**.impl,mx.meido.jblog.*.repository"/>
 	
 	
  	<bean id="msgBookDao" class="mx.meido.jblog.msgbook.dao.impl.MsgBookDaoImpl">
@@ -18,6 +18,9 @@
 	    <property name="dataSource" ref="dataSource"></property>
 	</bean>
  	<bean id="userInfoDao" class="mx.meido.jblog.user.dao.impl.UserInfoDaoImpl">
+	    <property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<bean id="postDao" class="mx.meido.jblog.post.dao.impl.PostDaoSqlImpl">
 	    <property name="dataSource" ref="dataSource"></property>
 	</bean>
 	

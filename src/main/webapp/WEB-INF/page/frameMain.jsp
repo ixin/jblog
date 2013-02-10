@@ -28,8 +28,8 @@
 		<div class="easyui-accordion" data-options="fit:false,border:false,animate:true">
 			<div title="文章管理" data-options="" style="padding:10px;font-size:14px;">
 				<ul id="tt2" class="easyui-tree topMenuUl" data-options="animate:true,dnd:false">
-					<li><a href="../msgbook.html" tabtitle="添加文章" >添加文章</a></li>
-					<li><a href="../msgbook.html" tabtitle="查看文章" >查看文章</a></li>
+					<li><a href="postManagementList.html" tabtitle="所有文章" >所有文章</a></li>
+					<li><a href="postManagementAdd.html" tabtitle="写文章" >写文章</a></li>
 					<li>
 						<span>文件夹子</span>
 						<ul class="easyui-tree topMenuUl" data-options="animate:true,dnd:false">

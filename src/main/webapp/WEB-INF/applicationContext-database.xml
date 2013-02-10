@@ -13,7 +13,6 @@
      http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
 
 
-    <!--
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
 		<property name="driverClass" value="com.mysql.jdbc.Driver"/>
 		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/demo"/>
@@ -29,12 +28,12 @@
     	<property name="acquireRetryAttempts" value="30"></property>  
     	<property name="breakAfterAcquireFailure" value="false"></property>
 	</bean>
-	-->
+
 
 	<!-- in-memory database and a datasource -->
-    <jdbc:embedded-database id="dataSource" type="H2">
+<!--     <jdbc:embedded-database id="dataSource" type="H2">
         <jdbc:script location="classpath:database/jblog_schema.sql"/>
         <jdbc:script location="classpath:database/jblog_data.sql"/>
-    </jdbc:embedded-database>
+    </jdbc:embedded-database> -->
   
 </beans>

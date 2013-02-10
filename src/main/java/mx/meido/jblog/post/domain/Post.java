@@ -1,12 +1,13 @@
 package mx.meido.jblog.post.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashMap;
 
 import mx.meido.jblog.user.model.UserInfo;
 
 //@Model
-public class Post {
+public class Post implements Serializable{
 	private long postId;
 	private PostStatus postStatus;
 	private PostValue postValue;
@@ -37,7 +38,7 @@ public class Post {
 			this.postId = postId;
 			return this;
 		}
-		public PostBuilder setNewPostValue(String title, String content, String summary, Date postTime, UserInfo user){
+		public PostBuilder setNewPostValue(String title, String content, String summary, java.util.Date postTime, UserInfo user){
 			this.postValue = new PostValue(title, content, summary, postTime);
 			this.user = user;
 			return this;

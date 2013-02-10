@@ -4,10 +4,11 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
+import org.springframework.stereotype.Repository;
 
 import mx.meido.jblog.post.dao.PostDao;
 import mx.meido.jblog.post.domain.Post;
-
+@Repository("postDao")
 public class PostDaoSqlImpl extends JdbcDaoSupport implements PostDao {
 
 	@Override
@@ -52,7 +53,7 @@ public class PostDaoSqlImpl extends JdbcDaoSupport implements PostDao {
 
 	@Override
 	public List<Map<String, Object>> getPostFromAndLimitWithTimeDesc(long from, int limit, String postStage) {
-		return this.getJdbcTemplate().queryForList("SELECT * FROM post WHERE postStage = ? LIMIT ? OFFSET ? ORDER BY id DESC", postStage, limit, from);
+		return this.getJdbcTemplate().queryForList("SELECT * FROM post WHERE postStage = ? ORDER BY id DESC LIMIT ? OFFSET ? ", postStage, limit, from);
 	}
 
 }

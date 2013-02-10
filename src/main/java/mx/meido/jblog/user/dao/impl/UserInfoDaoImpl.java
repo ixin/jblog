@@ -27,7 +27,7 @@ public class UserInfoDaoImpl extends JdbcDaoSupport implements UserInfoDao{
 		if(userMap != null){
 			int roleid = Integer.valueOf(userMap.get("roleid").toString());
 			Role role = roleDao.getRoleById(roleid);
-			java.util.Date date = (java.util.Date) userMap.get("registered");
+			java.util.Date date = new java.util.Date(((java.sql.Date) (userMap.get("registered"))).getTime());
 			ui = new UserInfo(username, userMap.get("password").toString(), role, null, userMap.get("nickname").toString(), userMap.get("email").toString(), userMap.get("url").toString(), date,  Integer.parseInt(userMap.get("isaccountnonexpired").toString())==0?false:true, Integer.parseInt(userMap.get("isaccountnonlocked").toString())==0?false:true, Integer.parseInt(userMap.get("iscredentialsnonexpired").toString())==0?false:true, Integer.parseInt(userMap.get("isenabled").toString())==0?false:true );
 		}
 		
@@ -62,8 +62,8 @@ public class UserInfoDaoImpl extends JdbcDaoSupport implements UserInfoDao{
 		List<Map<String, Object>> list = this.getJdbcTemplate().queryForList(sb.toString(), params);
 		//此处麻烦了。。。
 		for(Map<String, Object> map : list){
-			map.put("ROLEID",this.getRoleNameByRoleID(Integer.valueOf(map.get("ROLEID").toString())));//借用roleid，填充角色名
-			map.put("REGISTERED", new java.util.Date(((java.sql.Date)(map.get("REGISTERED"))).getTime()));
+			map.put("roleid",this.getRoleNameByRoleID(Integer.valueOf(map.get("roleid").toString())));//借用roleid，填充角色名
+			map.put("registered", new java.util.Date(((java.sql.Date)(map.get("registered"))).getTime()));
 		}
 		return list;
 	}
@@ -108,8 +108,8 @@ public class UserInfoDaoImpl extends JdbcDaoSupport implements UserInfoDao{
 	public Map getUserInfoByID(int id) {
 		String sql = "select * from userinfo where id = ?";
 		Map<String, Object> map = this.getJdbcTemplate().queryForMap(sql, new Object[]{id});
-		map.put("REGISTERED", new java.util.Date(((java.sql.Date)(map.get("REGISTERED"))).getTime()));
-		map.put("ROLEID",this.getRoleNameByRoleID(Integer.valueOf(map.get("ROLEID").toString())));//借用roleid，填充角色名
+		map.put("registered", new java.util.Date(((java.sql.Date)(map.get("registered"))).getTime()));
+		map.put("roleid",this.getRoleNameByRoleID(Integer.valueOf(map.get("roleid").toString())));//借用roleid，填充角色名
 		return map;
 	}
 	
