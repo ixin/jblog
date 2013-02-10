@@ -11,7 +11,10 @@
 	<link rel="stylesheet" type="text/css" href="../style/back/frameMain.css">
 	<script type="text/javascript" src="../script/jquery-1.8.0.min.js"></script>
 	<script type="text/javascript" src="../script/back/jquery.easyui.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="../script/back/kindeditor/kindeditor-min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="../script/back/kindeditor/lang/zh_CN.js"></script>
 	<script type="text/javascript" src="../script/back/frameMain.js"></script>
+
 </head>
 <body class="easyui-layout">
 	<div data-options="region:'north',border:false" class="head" style="height:60px;padding:0;background-color:#EEF5FF;overflow:hidden;">

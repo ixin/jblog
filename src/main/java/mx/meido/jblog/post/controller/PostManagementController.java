@@ -37,6 +37,11 @@ public class PostManagementController {
 		return null;
 	}
 	
+	@RequestMapping(value="/admin/postManagementNewOne.html", method=RequestMethod.GET)
+	public String showPostManagementNewOne(){
+		return "postManagementNewOne";
+	}
+	
 	public void doSearch(JSONObject jsonObj, HttpServletRequest request){
 		String pageNum = request.getParameter("page");
 		String rowsNum = request.getParameter("rows");

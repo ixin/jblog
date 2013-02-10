@@ -13,3 +13,4 @@ h2 {font-size:18px;font-weight:bold;margin:0;margin-bottom:15px;}
 .head a:link, .head a:visited {color: #888888;text-decoration: none;}
 .head a:hover, .head a:active {color: #FFCC3C;text-decoration: none;}
 .head strong {font-weight: bold;}
+textarea {display: block;}

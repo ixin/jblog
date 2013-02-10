@@ -13,8 +13,8 @@
 		style="border:1px solid #A4BED4;width:150px;margin-right:10px;" />
 	<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'"
 		onclick="${pageName }reloadDataGridWithSearchValue();">查询</a>
-	<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true"
-		onclick="return false;">写文章</a>
+	<a href="postManagementNewOne.html" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true"
+		onclick="javascript:openTab(this);return false;" tabtitle="写文章" >写文章</a>
 </div>
 <script type="text/javascript">
 $(document).ready(function(){
