@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import mx.meido.jblog.user.dao.UserInfoDao;
 import mx.meido.jblog.user.model.UserInfo;
 import mx.meido.jblog.user.service.UserInfoService;
-@Service("userInfoService")
+@Service("userInfoService") 
 public class UserInfoServiceImpl implements UserInfoService{
 	@Autowired
 	private UserInfoDao userInfoDao;
@@ -21,17 +21,32 @@ public class UserInfoServiceImpl implements UserInfoService{
 		return userInfoDao.loadUserByUsername(username);
 	}
 	@Override
-	public List getUserInfos(UserInfo userinfo, int fromResultCount,
+	public List<Map<String, Object>> getUserInfos(UserInfo userinfo, int fromResultCount,
 			int resultCountPerPage) {
-		return userInfoDao.getUserInfos(userinfo, fromResultCount, resultCountPerPage);
+		List<Map<String, Object>> list =  userInfoDao.getUserInfos(userinfo, fromResultCount, resultCountPerPage);
+		//此处麻烦了。。。
+		for(Map<String, Object> map : list){
+			map.put("roleid",this.getRoleByRoleID(Integer.valueOf(map.get("roleid").toString())).get("roledescrition"));//借用roleid，填充角色名
+			map.put("registered", new java.util.Date(((java.sql.Date)(map.get("registered"))).getTime()));
+		}
+		return list;
 	}
 	@Override
 	public int getUserInfosCount(UserInfo userinfo) {
 		return userInfoDao.getUserInfosCount(userinfo);
 	}
 	@Override
-	public Map getUserInfoByID(int id) {
-		return userInfoDao.getUserInfoByID(id);
+	public Map<String, Object> getUserInfoByID(int id) {
+		Map<String, Object> userinfo = userInfoDao.getUserInfoByID(id);
+		if(userinfo != null){
+			userinfo.put("registered", new java.util.Date(((java.sql.Date)(userinfo.get("registered"))).getTime()));
+			userinfo.put("roleid",this.getRoleByRoleID(Integer.valueOf(userinfo.get("roleid").toString())).get("roledescrition"));//借用roleid，填充角色名
+		}
+		return userinfo;
+	}
+	@Override
+	public Map<String, Object> getRoleByRoleID(int roleId) {
+		return userInfoDao.getRoleByRoleID(roleId);
 	}
 
 }

@@ -32,7 +32,13 @@
 			<div title="文章管理" data-options="" style="padding:10px;font-size:14px;">
 				<ul id="tt2" class="easyui-tree topMenuUl" data-options="animate:true,dnd:false">
 					<li><a href="postManagementList.html" tabtitle="所有文章" >所有文章</a></li>
-					<li><a href="postManagementAdd.html" tabtitle="写文章" >写文章</a></li>
+					<li><a href="postManagementNewPost.html" tabtitle="写文章" >写文章</a></li>
+				</ul>
+			</div>
+			<div title="评论管理" data-options="" style="padding:10px;font-size:14px;">
+				<ul id="tt2" class="easyui-tree topMenuUl" data-options="animate:true,dnd:false,title:'评论管理'">
+					<li>添加文章</li>
+					<li>查看文章</li>
 					<li>
 						<span>文件夹子</span>
 						<ul class="easyui-tree topMenuUl" data-options="animate:true,dnd:false">
@@ -42,13 +48,6 @@
 							<li><a href="#" >子目录</a></li>
 						</ul>
 					</li>
-					
-				</ul>
-			</div>
-			<div title="评论管理" data-options="" style="padding:10px;font-size:14px;">
-				<ul id="tt2" class="easyui-tree topMenuUl" data-options="animate:true,dnd:false,title:'评论管理'">
-					<li>添加文章</li>
-					<li>查看文章</li>
 				</ul>
 			</div>
 			<div title="用户管理" data-options="" style="padding:10px;font-size:14px;">

@@ -13,7 +13,7 @@ public class Post implements Serializable{
 	private PostValue postValue;
 	private UserInfo user;
 	
-	public long getPostId() {
+	public long getPostId() { 
 		return postId;
 	}
 	public PostValue getPostValue() {

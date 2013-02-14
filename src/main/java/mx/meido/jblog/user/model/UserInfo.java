@@ -13,7 +13,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 public class UserInfo implements UserDetails,Serializable{
-
+ 
 	private String username;
 	private String password;
 	private Role role;

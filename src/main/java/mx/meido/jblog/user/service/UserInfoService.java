@@ -24,4 +24,6 @@ public interface UserInfoService extends UserDetailsService{
 	public int getUserInfosCount(UserInfo userinfo);
 	
 	public Map getUserInfoByID(int id);
+	
+	public Map getRoleByRoleID(int roleId);
 }

@@ -13,7 +13,7 @@ public class PostValue implements Serializable{
 		this.content = content;
 		this.summary = summary;
 		this.postTime = postTime;
-	}
+	} 
 	
 	public String getTitle() {
 		return title;

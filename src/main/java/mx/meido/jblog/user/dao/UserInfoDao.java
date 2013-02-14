@@ -31,9 +31,9 @@ public interface UserInfoDao {
 	 */
 	public int getUserInfosCount(UserInfo userinfo);
 	
-	public String getRoleNameByRoleID(int roleId);
-	
 	public int getPostCountByUsername(String username);
 	
 	public Map getUserInfoByID(int id);
+	
+	public Map getRoleByRoleID(int roleId);
 }

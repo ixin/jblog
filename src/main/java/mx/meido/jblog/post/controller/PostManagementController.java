@@ -2,6 +2,7 @@ package mx.meido.jblog.post.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -9,9 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import mx.meido.jblog.post.domain.Post;
+import mx.meido.jblog.post.domain.PostValue;
 import mx.meido.jblog.post.service.PostService;
 import mx.meido.jblog.user.model.UserInfo;
 import net.sf.json.JSONObject;
+import net.sf.json.JsonConfig;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,9 +40,9 @@ public class PostManagementController {
 		return null;
 	}
 	
-	@RequestMapping(value="/admin/postManagementNewOne.html", method=RequestMethod.GET)
-	public String showPostManagementNewOne(){
-		return "postManagementNewOne";
+	@RequestMapping(value="/admin/postManagementNewPost.html", method=RequestMethod.GET)
+	public String showPostManagementNewPost(){
+		return "postManagementNewPost";
 	}
 	
 	public void doSearch(JSONObject jsonObj, HttpServletRequest request){
@@ -56,6 +59,17 @@ public class PostManagementController {
 		List<Post> posts = postService.getPostFromAndLimitWithTimeDesc((currPage - 1) * resultCountPerPage, resultCountPerPage);
 		Integer total = postService.getPostCount();
 		jsonObj.put("total", total);
-		jsonObj.put("rows", posts);
+		JSONObject tjsonObj = null;
+		for(Post p : posts){
+			tjsonObj = new JSONObject();
+			tjsonObj.put("id", p.getPostId());
+			PostValue pv = p.getPostValue();
+			tjsonObj.put("title", pv.getTitle());
+			tjsonObj.put("summary", pv.getSummary());
+			tjsonObj.put("nickname", p.getUser().getNickname());
+			tjsonObj.put("posttime", pv.getPostTime().getTime());
+			jsonObj.accumulate("rows", tjsonObj);
+		}
+		
 	}
 }

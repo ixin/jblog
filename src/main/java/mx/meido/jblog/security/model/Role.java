@@ -10,7 +10,7 @@ public class Role implements Serializable{
 	private String roleName;
 	private String roleDescrition;
 	private Set<SimpleGrantedAuthority> authorities;
-
+ 
 	public int getId() {
 		return id;
 	}

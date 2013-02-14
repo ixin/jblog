@@ -13,7 +13,7 @@
 		style="border:1px solid #A4BED4;width:150px;margin-right:10px;" />
 	<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'"
 		onclick="${pageName }reloadDataGridWithSearchValue();">查询</a>
-	<a href="postManagementNewOne.html" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true"
+	<a href="postManagementNewPost.html" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true"
 		onclick="javascript:openTab(this);return false;" tabtitle="写文章" >写文章</a>
 </div>
 <script type="text/javascript">
@@ -96,12 +96,27 @@ $(document).ready(function(){
 		singleSelect: true,
 		url: "postManagementList.do",
 		columns:[[
-			{field:"postValue.title",title:"标题",align:"center",width:150},
-			{field:"user.nickname",title:"作者",align:"center",width:150},
-			{field:"EMAIL",title:"分类目录",align:"center",width:150},
-			{field:"ROLEID",title:"标签",align:"center",width:80},
-			{field:"POST",title:"评论",align:"center",width:60},
-			{field:"POST.postTime",title:"日期",align:"center",width:100}
+			{field:"title",title:"标题",align:"center",width:250},
+			{field:"nickname",title:"作者",align:"center",width:80},
+			{field:"part",title:"分类目录",align:"center",width:80},
+			{field:"pl",title:"评论数",align:"center",width:60},
+			{field:"posttime",title:"日期",align:"center",width:100,
+				formatter: function(value,rowData,rowIndex){
+					var date = new Date(value);
+					var year = date.getFullYear();  
+        			var month = ("0" + (date.getMonth() + 1)).slice(-2);  
+        			var day = ("0" + date.getDate()).slice(-2);  
+        			var h = ("0" + date.getHours()).slice(-2);  
+        			var m = ("0" + date.getMinutes()).slice(-2);  
+        			var s = ("0" + date.getSeconds()).slice(-2);   
+					return year + "-" + month + "-" + day + "&nbsp;" + h + ":" + m + ":" + s;
+				}	
+			},
+			{field:"id",title:"操作",align:"center",width:100,
+				formatter: function(value,rowData,rowIndex){
+					return "<a href='###' onclick='return false;' >查看</a> | <a href='##' onclick='return false;' >编辑</a> | <a href='#' onclick='return false;' ><span style='color:red;'>移至回收站</span></a>";
+				}
+			}
 		]],
 		sortName: "role",
 		sortOrder: "desc",

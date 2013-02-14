@@ -13,7 +13,7 @@ import mx.meido.jblog.security.dao.RoleDao;
 import mx.meido.jblog.security.model.Role;
 @Repository("roleDao")
 public class RoleDaoImpl extends JdbcDaoSupport implements RoleDao{
-
+ 
 	@Override
 	public Role getRoleById(int roleid) {
 		String sql = "select * from role where id = ?";
