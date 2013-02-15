@@ -36,7 +36,7 @@ public class PostDaoSqlImpl extends JdbcDaoSupport implements PostDao {
 				post.getPostValue().getTitle(),
 				post.getPostValue().getContent(), 
 				post.getPostValue().getSummary(), 
-				new java.sql.Date(post.getPostValue().getPostTime().getTime()), 
+				new java.sql.Timestamp(post.getPostValue().getPostTime().getTime()), 
 				post.getPostStatus().getPostStage().getStage());
 	}
 

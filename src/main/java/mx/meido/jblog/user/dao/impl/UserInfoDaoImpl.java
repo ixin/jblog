@@ -37,7 +37,7 @@ public class UserInfoDaoImpl extends JdbcDaoSupport implements UserInfoDao{
 	public List<Map<String, Object>> getUserInfos(UserInfo userinfo, int fromResultCount,
 			int resultCountPerPage) {
 		StringBuffer sb = new StringBuffer("select * from userinfo ui where 1 = 1 ");
-		int paramsSize = 0;
+		int paramsSize = 2;
 		if(StringUtils.isNotBlank(userinfo.getUsername())){
 			sb.append(" and ui.username = ? ");
 			paramsSize ++;
@@ -46,10 +46,15 @@ public class UserInfoDaoImpl extends JdbcDaoSupport implements UserInfoDao{
 			sb.append(" and ui.email = ? ");
 			paramsSize ++;
 		}
-		sb.append(" order by ui.registered ");
+		sb.append(" order by ui.registered limit ? offset ? ");
 		//初始化参数数组
 		Object[] params = new Object[paramsSize];
 		//逆序设置参数值
+		paramsSize --;
+		params[paramsSize] = fromResultCount;
+		paramsSize --;
+		params[paramsSize] = resultCountPerPage;
+		
 		if(StringUtils.isNotBlank(userinfo.getEmail())){
 			paramsSize --;
 			params[paramsSize] = userinfo.getEmail();

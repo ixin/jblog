@@ -10,7 +10,7 @@
 					<tr>
 						<th><label for="user_login">用户名</label></th>
 						<td><input type="text" name="user_login" id="user_login"
-							value="bolgxiaoxin" disabled="disabled" class="regular-text">
+							value="XXXXXXXXXX" disabled="disabled" class="regular-text">
 							<span class="description">用户名不可更改。</span></td>
 					</tr>
 
@@ -25,7 +25,7 @@
 						<th><label for="display_name">公开显示为</label></th>
 						<td><select name="display_name" id="display_name">
 								<option selected="selected">小辛</option>
-								<option>bolgxiaoxin</option>
+								<option>XXXXXXXXXX</option>
 						</select></td>
 					</tr>
 				</tbody>
@@ -38,7 +38,7 @@
 					<tr>
 						<th><label for="email">电子邮件 <span class="description">(必填)</span></label></th>
 						<td><input type="text" name="email" id="email"
-							value="myandroid@qq.com" class="regular-text"></td>
+							value="XXXXXXXXX@XXX.com" class="regular-text"></td>
 					</tr>
 
 					<tr>

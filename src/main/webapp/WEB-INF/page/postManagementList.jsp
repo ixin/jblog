@@ -18,73 +18,6 @@
 </div>
 <script type="text/javascript">
 $(document).ready(function(){
-	
-/* 	$.extend($.fn.datagrid.defaults.view, {
-		renderRow: function(target, fields, frozen, rowIndex, rowData) {
-			var opts = $.data(target, 'datagrid').options;
-
-			var cc = [];
-			if (frozen && opts.rownumbers) {
-				var rownumber = rowIndex + 1;
-				if (opts.pagination) {
-					rownumber += (opts.pageNumber - 1) * opts.pageSize;
-				}
-				cc.push('<td class="datagrid-td-rownumber"><div class="datagrid-cell-rownumber">' + rownumber + '</div></td>');
-			}
-			for (var i = 0; i < fields.length; i++) {
-				var field = fields[i];
-				var col = $(target).datagrid('getColumnOption', field);
-				if (col) {
-					//start 处理多级数据
-	                var fieldSp = field.split(".");
-	                var dta = rowData[fieldSp[0]];
-	                for (var j = 1; j < fieldSp.length; j++) {
-	                    dta = dta[fieldSp[j]];
-	                }
-	                //end 处理多级数据
-					// get the cell style attribute
-					var styleValue = col.styler ? (col.styler(dta, rowData, rowIndex) || '') : '';
-					var style = col.hidden ? 'style="display:none;' + styleValue + '"' : (styleValue ? 'style="' + styleValue + '"' : '');
-
-					cc.push('<td field="' + field + '" ' + style + '>');
-
-					if (col.checkbox) {
-						var style = '';
-					} else {
-						var style = '';
-						//var style = 'width:' + (col.boxWidth) + 'px;';
-						style += 'text-align:' + (col.align || 'left') + ';';
-						if (!opts.nowrap) {
-							style += 'white-space:normal;height:auto;';
-						} else if (opts.autoRowHeight) {
-							style += 'height:auto;';
-						}
-					}
-
-					cc.push('<div style="' + style + '" ');
-					if (col.checkbox) {
-						cc.push('class="datagrid-cell-check ');
-					} else {
-						cc.push('class="datagrid-cell ' + col.cellClass);
-					}
-					cc.push('">');
-
-					if (col.checkbox) {
-						cc.push('<input type="checkbox" name="' + field + '" value="' + (dta != undefined ? dta : '') + '"/>');
-					} else if (col.formatter) {
-						cc.push(col.formatter(dta, rowData, rowIndex));
-					} else {
-						cc.push(dta);
-					}
-
-					cc.push('</div>');
-					cc.push('</td>');
-				}
-			}
-			return cc.join('');
-		}
-	}); */
-	
     $("#${pageName}datagrid").datagrid({
 		nowrap: false,
 		striped: true,
@@ -112,6 +45,7 @@ $(document).ready(function(){
 					return year + "-" + month + "-" + day + "&nbsp;" + h + ":" + m + ":" + s;
 				}	
 			},
+			{field:"poststage",title:"状态",align:"center",width:60},
 			{field:"id",title:"操作",align:"center",width:100,
 				formatter: function(value,rowData,rowIndex){
 					return "<a href='###' onclick='return false;' >查看</a> | <a href='##' onclick='return false;' >编辑</a> | <a href='#' onclick='return false;' ><span style='color:red;'>移至回收站</span></a>";
@@ -156,62 +90,8 @@ $(document).ready(function(){
 });
 function ${pageName }reloadDataGridWithSearchValue() {
 	$("#${pageName}datagrid").datagrid("load",{
-            corpName: $("#${pageName}username").val()
+		username: $("#${pageName}username").val()
     });
-} 
-
-function forDelUser(delid, username){ 
-	$.messager.confirm("提示","确认删除[" + username + "]吗？",function(event){
-		if(event){
-			$.ajax({
-				url: '#',
-				type: 'GET',
-				data: 'delid='+delid,
-				timeout: 20000,
-				success: function(data, textStatus){
-					if(textStatus == 'success'){
-						if(data == 'success'){
-							${pageName}reloadDataGridWithSearchValue();
-						}else {
-							showMsg("操作失败，请重试或联系系统管理员！");
-						}
-					}
-				},
-				error: function(){
-			    	showMsg("发生错误，请重试或联系系统管理员！");
-            	}
-			});
-			return false;
-		}
-	}); 
-}
-function showMsg(msg){
-	$.messager.alert("提示",msg);
 }
 
-function forUnlockUser(unlockid, username){
-	$.messager.confirm("提示","确认要解锁[" + username + "]吗？",function(event){
-		if(event){
-			$.ajax({
-				url: '#',
-				type: 'GET',
-				data: 'unlockid='+unlockid,
-				timeout: 20000,
-				success: function(data, textStatus){
-					if(textStatus == 'success'){
-						if(data == 'success'){
-							${pageName}reloadDataGridWithSearchValue();
-						}else {
-							showMsg("操作失败，请重试或联系系统管理员！");
-						}
-					}
-				},
-				error: function(){
-			    	showMsg("发生错误，请重试或联系系统管理员！");
-            	}
-			});
-			return false;
-		}
-	}); 
-}
 </script>

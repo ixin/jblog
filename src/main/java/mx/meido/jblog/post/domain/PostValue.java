@@ -1,8 +1,6 @@
 package mx.meido.jblog.post.domain;
 
-import java.io.Serializable;
-
-public class PostValue implements Serializable{
+public class PostValue{
 	private final String title;//
 	private final String content;//内容
 	private final String summary;//简介

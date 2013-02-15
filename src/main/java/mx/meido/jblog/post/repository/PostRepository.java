@@ -67,16 +67,11 @@ public class PostRepository {
 	}
 	public List<Post> getPostFromAndLimitWithTimeDesc(long from, int limit, String postStage){
 		List<Map<String, Object>> postsRequested = postDao.getPostFromAndLimitWithTimeDesc(from, limit, postStage);
-/*		for(Map<String, Object> rs : postsRequested){
-			rs.put("postTime", new java.util.Date(((java.sql.Date)(rs.get("postTime"))).getTime()));
-		}*/
 		List<Post> posts = new ArrayList<Post>();
 		for(Map<String, Object> rs : postsRequested){
 			Post.PostBuilder pb = new PostBuilder();
 			UserInfo u = (UserInfo) userInfoDao.loadUserByUsername((String) rs.get("postuser"));
-			//java.sql.Timestamp d = (java.sql.Timestamp) (rs.get("postTime"));
 			java.util.Date date = new java.util.Date(((java.sql.Timestamp) (rs.get("posttime"))).getTime());
-			//java.util.Date date = (java.util.Date)rs.get("postTime");
 			pb.setPostId((long) rs.get("id"))
 				.setPostStatus(null, PostStage.PUBLISH)
 				.setNewPostValue((String)rs.get("title"), (String)rs.get("content"), (String)rs.get("summary"), date, u);

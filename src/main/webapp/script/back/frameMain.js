@@ -71,3 +71,7 @@ function newsBounced(Title, Msg) {
    showType : 'slide'
    });
 }
+//消息框
+function showMsg(msg){
+	$.messager.alert("提示",msg);
+}

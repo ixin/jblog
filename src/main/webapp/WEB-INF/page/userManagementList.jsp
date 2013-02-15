@@ -105,9 +105,6 @@ function forDelUser(delid, username){
 		}
 	}); 
 }
-function showMsg(msg){
-	$.messager.alert("提示",msg);
-}
 
 function forUnlockUser(unlockid, username){
 	$.messager.confirm("提示","确认要解锁[" + username + "]吗？",function(event){
