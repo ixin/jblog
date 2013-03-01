@@ -1,6 +1,7 @@
 package mx.meido.jblog.post.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
@@ -15,6 +16,7 @@ public interface PostService {
 	public Post getPreviousPost(Post post);
 	public void createNewPost(Post post);
 	public void deletePost(long id);
+	public Map getPost(long id);
 	public void changePostStage(Post post);
-	public List<Post> getPostFromAndLimitWithTimeDesc(long from, int limit);
+	public List<Post> getPostFromAndLimitWithTimeDesc(long from, int limit, String postStage);
 }

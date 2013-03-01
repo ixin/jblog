@@ -11,6 +11,7 @@ public interface PostDao {
 	public Map<String, Object> getPreviousPost(long fromId, String postStage);
 	public void save(Post post);
 	public void delete(long id);
+	public Map getPost(long id);
 	public void changePostStage(long id, String postStage);
 	public List<Map<String, Object>> getPostFromAndLimitWithTimeDesc(long from, int limit, String postStage);
 }

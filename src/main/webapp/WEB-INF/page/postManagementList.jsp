@@ -15,6 +15,9 @@
 		onclick="${pageName }reloadDataGridWithSearchValue();">查询</a>
 	<a href="postManagementNewPost.html" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true"
 		onclick="javascript:openTab(this);return false;" tabtitle="写文章" >写文章</a>
+	<label> | </label>
+	<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-no',plain:true"
+		onclick="return false;" tabtitle="写文章" >批量删除</a>
 </div>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -28,8 +31,11 @@ $(document).ready(function(){
 		loadMsg: "正在加载，请稍候...",
 		singleSelect: true,
 		url: "postManagementList.do",
+		selectOnCheck: false,
+		checkOnSelect: false,
 		columns:[[
-			{field:"title",title:"标题",align:"center",width:250},
+			{field:"ck", checkbox:true},
+			{field:"title",title:"标题",align:"left",width:200},
 			{field:"nickname",title:"作者",align:"center",width:80},
 			{field:"part",title:"分类目录",align:"center",width:80},
 			{field:"pl",title:"评论数",align:"center",width:60},

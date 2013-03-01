@@ -3,6 +3,7 @@ package mx.meido.jblog.post.dao.impl;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Repository;
 
@@ -53,7 +54,32 @@ public class PostDaoSqlImpl extends JdbcDaoSupport implements PostDao {
 
 	@Override
 	public List<Map<String, Object>> getPostFromAndLimitWithTimeDesc(long from, int limit, String postStage) {
-		return this.getJdbcTemplate().queryForList("SELECT * FROM post WHERE postStage = ? ORDER BY id DESC LIMIT ? OFFSET ? ", postStage, limit, from);
+		StringBuffer sb = new StringBuffer("SELECT * FROM post WHERE 1 = 1 ");
+		int paramsSize = 2;
+		if(StringUtils.isNotBlank(postStage)){
+			sb.append(" postStage = ? ");
+			paramsSize++;
+		}
+		sb.append(" ORDER BY id DESC LIMIT ? OFFSET ? ");
+		//初始化参数数组
+		Object[] params = new Object[paramsSize];
+		//逆序设置参数值
+		paramsSize --;
+		params[paramsSize] = from;
+		paramsSize --;
+		params[paramsSize] = limit;
+		
+		if(StringUtils.isNotBlank(postStage)){
+			paramsSize --;
+			params[paramsSize] = postStage;
+		}
+		return this.getJdbcTemplate().queryForList(sb.toString(), params);
+	}
+
+	@Override
+	public Map<String, Object> getPost(long id) {
+		String sql = "select * from post where id = ? ";
+		return this.getJdbcTemplate().queryForMap(sql, id);
 	}
 
 }

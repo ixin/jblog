@@ -40,7 +40,7 @@ public class PostManagementController {
 	@RequestMapping(value="/admin/postManagementList.do", method=RequestMethod.POST)
 	public String getPostManagementList(HttpServletResponse response, HttpServletRequest request) throws IOException{
 		JSONObject jsonObj = new JSONObject();
-		doSearch(jsonObj, request);
+		doSearch(jsonObj, request, null);
 		PrintWriter pw = response.getWriter();
 		pw.print(jsonObj.toString());
 		pw.close();
@@ -79,7 +79,7 @@ public class PostManagementController {
 		return null;
 	}
 	
-	public void doSearch(JSONObject jsonObj, HttpServletRequest request){
+	public void doSearch(JSONObject jsonObj, HttpServletRequest request, String postStage){
 		String pageNum = request.getParameter("page");
 		String rowsNum = request.getParameter("rows");
 		String email = request.getParameter("email");
@@ -89,7 +89,7 @@ public class PostManagementController {
 		UserInfo userinfo = new UserInfo();
 		userinfo.setUsername(username);
 		userinfo.setEmail(email);
-		List<Post> posts = postService.getPostFromAndLimitWithTimeDesc((currPage - 1) * resultCountPerPage, resultCountPerPage);
+		List<Post> posts = postService.getPostFromAndLimitWithTimeDesc((currPage - 1) * resultCountPerPage, resultCountPerPage, postStage);
 		Integer total = postService.getPostCount();
 		jsonObj.put("total", total);
 		if(posts.size() <= 0){

@@ -1,6 +1,7 @@
 package mx.meido.jblog.post.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,7 +39,11 @@ public class PostServiceImpl implements PostService {
 		pr.changePostStage(post);
 	}
 	@Override
-	public List<Post> getPostFromAndLimitWithTimeDesc(long from, int limit){
-		return pr.getPostFromAndLimitWithTimeDesc(from, limit, PostStage.PUBLISH.getStage());
+	public List<Post> getPostFromAndLimitWithTimeDesc(long from, int limit, String postStage){
+		return pr.getPostFromAndLimitWithTimeDesc(from, limit, postStage);
+	}
+	@Override
+	public Map<String, Object> getPost(long id) {
+		return pr.getPost(id);
 	}
 }

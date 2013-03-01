@@ -25,6 +25,7 @@
 .red {color: white;background-color: red;}
 .green {color: white;background-color: green;}
 .yellow {color: white;background-color: yellow;}
+#title{border-radius:3px 3px 3px 3px;border-width:1px;border-color:#CCCCCC;font-size:1.5em;line-height:100%;outline:medium none;padding:3px 4px;}
 .${pageName}suojin{margin-left:30px;}
 #${pageName}tip{height:50px;line-height:50px;color:#0E2D5F;font-size:medium;font-weight:bold;}
 #${pageName}changeOption{margin-left:10px;}

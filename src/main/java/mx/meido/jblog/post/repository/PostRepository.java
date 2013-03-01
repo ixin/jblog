@@ -60,6 +60,9 @@ public class PostRepository {
 	public void deletePost(long id){
 		postDao.delete(id);
 	}
+	public Map<String, Object> getPost(long id){
+		return postDao.getPost(id);
+	}
 	public void changePostStage(Post post){
 		long postId = post.getPostId();
 		String postStageString = post.getPostStatus().getPostStage().getStage();
@@ -70,10 +73,14 @@ public class PostRepository {
 		List<Post> posts = new ArrayList<Post>();
 		for(Map<String, Object> rs : postsRequested){
 			Post.PostBuilder pb = new PostBuilder();
+			if(((String)rs.get("postStage")).equals(PostStage.PUBLISH.getStage())){
+				pb.setPostStatus(null, PostStage.PUBLISH);
+			} else if(((String)rs.get("postStage")).equals(PostStage.DRAFT.getStage())){
+				pb.setPostStatus(null, PostStage.DRAFT);
+			}
 			UserInfo u = (UserInfo) userInfoDao.loadUserByUsername((String) rs.get("postuser"));
 			java.util.Date date = new java.util.Date(((java.sql.Timestamp) (rs.get("posttime"))).getTime());
 			pb.setPostId((long) rs.get("id"))
-				.setPostStatus(null, PostStage.PUBLISH)
 				.setNewPostValue((String)rs.get("title"), (String)rs.get("content"), (String)rs.get("summary"), date, u);
 			posts.add(pb.build());
 		}
