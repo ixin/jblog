@@ -7,6 +7,10 @@ html, body {
 	margin-top: 10px;
 	color: #888888;
 }
+.page-header h1{
+	font-size: xx-large;
+	font-weight: bolder;
+}
 section {
   /* border: #D2D2D2 1px solid; */
   padding: 0 5px;
@@ -77,4 +81,19 @@ section ul li{
       }
 #myLoginModal .input-block-level{
 	font-weight: bold;
+}
+.post-list .profile-title{
+	text-decoration: none;
+	font-size: xx-large;
+	font-weight: bolder;
+}
+.post-list .profile-title:HOVER{
+	color: gray;
+}
+.post-list{
+	margin-top: 25px;
+	color: #888888;
+}
+.post-list a{
+	color:#333333;
 }

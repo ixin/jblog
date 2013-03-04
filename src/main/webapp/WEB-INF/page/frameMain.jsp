@@ -31,7 +31,7 @@
 		<div class="easyui-accordion" data-options="fit:false,border:false,animate:true">
 			<div title="文章管理" data-options="" style="padding:10px;font-size:14px;">
 				<ul id="tt2" class="easyui-tree topMenuUl" data-options="animate:true,dnd:false">
-					<li><a href="postManagementList.html" tabtitle="所有文章" >所有文章</a></li>
+					<li><a href="postManagementList.html" tabtitle="所有文章" id="allpost">所有文章</a></li>
 					<li><a href="postManagementNewPost.html" tabtitle="写文章" >写文章</a></li>
 				</ul>
 			</div>

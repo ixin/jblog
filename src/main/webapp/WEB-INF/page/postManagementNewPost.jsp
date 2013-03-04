@@ -65,9 +65,11 @@ function savePost(o){
 		success: function(data, textStatus){
 			if(textStatus == 'success'){
 				if(data == 'success'){
-					showMsg('成功');
+					showMsg('操作成功');
+					$("#mainTabs").tabs('close','写文章');
+					openTab($('#allpost'));
 				}else {
-					showMsg('似乎文章出了问题');
+					showMsg('似乎文章出了问题,再发一遍试试吧。。。 > .<');
 				}
 				
 			}

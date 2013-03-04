@@ -57,13 +57,13 @@ public class PostDaoSqlImpl extends JdbcDaoSupport implements PostDao {
 		StringBuffer sb = new StringBuffer("SELECT * FROM post WHERE 1 = 1 ");
 		int paramsSize = 2;
 		if(StringUtils.isNotBlank(postStage)){
-			sb.append(" postStage = ? ");
+			sb.append(" and postStage = ? ");
 			paramsSize++;
 		}
 		sb.append(" ORDER BY id DESC LIMIT ? OFFSET ? ");
 		//初始化参数数组
 		Object[] params = new Object[paramsSize];
-		//逆序设置参数值
+		//设置参数值
 		paramsSize --;
 		params[paramsSize] = from;
 		paramsSize --;

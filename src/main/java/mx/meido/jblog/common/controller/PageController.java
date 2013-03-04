@@ -17,10 +17,7 @@ public class PageController {
 		hs.setAttribute("u", userDetails.getUsername());
 		return "frameMain";
 	}
-	@RequestMapping(value="/profile.html")
-	public String showProfile(){
-		return "profile";
-	}
+
 	@RequestMapping(value="/login.html")
 	public String showLogin(){
 		return "login";

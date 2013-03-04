@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<title>文章</title>
+<title>${post.title} | 文章</title>
 <meta name="Generator" content="EditPlus">
 <meta name="Author" content="">
 <meta name="Keywords" content="">
@@ -22,10 +22,10 @@
 				<a class="btn btn-navbar" data-toggle="collapse"
 					data-target=".nav-collapse"> <span class="icon-bar"></span> <span
 					class="icon-bar"></span> <span class="icon-bar"></span>
-				</a> <a class="brand" href="#">小辛博客</a>
+				</a> <a class="brand" href="<%=request.getContextPath() %>">小辛博客</a>
 				<div class="nav-collapse collapse">
 					<ul class="nav">
-						<li class="active"><a href="#">首页</a></li>
+						<li><a href="<%=request.getContextPath() %>">首页</a></li>
 						<li><a href="#about">关于</a></li>
 						<li><a href="#contact">联系我</a></li>
 					</ul>
@@ -58,7 +58,7 @@
 		<div class="content">
 			<div class="page-header">
 				<h1>${post.title}</h1>
-				<div><span>作者：<a href="#">我</a>&nbsp;&nbsp;&nbsp;发布时间：&nbsp;DECEMBER&nbsp;1,&nbsp;2012&nbsp;&nbsp;分类：&nbsp;<a href="#">散文</a> &nbsp;暂无评论</span></div>
+				<div><span>作者：<a href="#">我</a>&nbsp;&nbsp;&nbsp;发布时间：&nbsp;${post.postTime}&nbsp;&nbsp;分类：&nbsp;<a href="#">默认</a> &nbsp;暂无评论</span></div>
 			</div>
 			<div class="container-fluid">
 				<div class="row-fluid">
