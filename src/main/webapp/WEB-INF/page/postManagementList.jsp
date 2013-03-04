@@ -54,7 +54,7 @@ $(document).ready(function(){
 			{field:"poststage",title:"状态",align:"center",width:60},
 			{field:"id",title:"操作",align:"center",width:100,
 				formatter: function(value,rowData,rowIndex){
-					return "<a href='../p.do?id="+value+"' target='_blank' >查看</a> | <a href='##' onclick='return false;' >编辑</a> | <a href='#' onclick='return false;' ><span style='color:red;'>移至回收站</span></a>";
+					return "<a href='../post/"+value+"/' target='_blank' >查看</a> | <a href='##' onclick='return false;' >编辑</a> | <a href='#' onclick='return false;' ><span style='color:red;'>移至回收站</span></a>";
 				}
 			}
 		]],

@@ -42,7 +42,7 @@ public class UrlMapping implements Filter {
 		String url = req.getServletPath();
 		String[] url_params = url.split("/");
 		//分析url
-		if(StringUtils.isNotBlank(url_params[1]) && !req.getParameterNames().hasMoreElements()){
+		if(!req.getParameterNames().hasMoreElements()){
 			if(url_params[1].equals("post")){
 				req.getRequestDispatcher("/p.do?id="+url_params[2]).forward(req, res);
 			}else if(url_params[1].equals("tag")){
@@ -51,7 +51,11 @@ public class UrlMapping implements Filter {
 				chain.doFilter(request, response);
 			}
 		}else {
-			res.sendRedirect(cxtPath+"/404.jsp");
+			if(url_params[1].equals("admin")){
+				chain.doFilter(request, response);
+			}else{
+				res.sendRedirect(cxtPath+"/404.jsp");
+			}
 		}
 	}
 

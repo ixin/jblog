@@ -105,7 +105,7 @@
 	<!-- 登录Modal -->
 	<div id="myLoginModal" class="modal hide fade" tabindex="-1" >
   		<div class="modal-body">
-	    	<form class="form-signin" method="post" action="j_spring_security_check">
+	    	<form class="form-signin" method="post" action="${ctxPath}/j_spring_security_check">
         		<h2 class="form-signin-heading">请登录</h2>
         		<input type="text" class="input-block-level" placeholder="Username" name="j_username">
         		<input type="password" class="input-block-level" placeholder="Password" name="j_password">
