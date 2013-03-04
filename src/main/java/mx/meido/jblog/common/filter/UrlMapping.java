@@ -47,6 +47,8 @@ public class UrlMapping implements Filter {
 				req.getRequestDispatcher("/p.do?id="+url_params[2]).forward(req, res);
 			}else if(url_params[1].equals("tag")){
 				req.getRequestDispatcher("/t.do?id="+url_params[2]).forward(req, res);
+			}else if(url_params[1].equals("page")){
+				req.getRequestDispatcher("/page.do?id="+url_params[2]).forward(req, res);
 			} else {
 				chain.doFilter(request, response);
 			}
@@ -54,7 +56,7 @@ public class UrlMapping implements Filter {
 			if(url_params[1].equals("admin")){
 				chain.doFilter(request, response);
 			}else{
-				res.sendRedirect(cxtPath+"/404.jsp");
+				res.sendRedirect(cxtPath+"/404.html");
 			}
 		}
 	}

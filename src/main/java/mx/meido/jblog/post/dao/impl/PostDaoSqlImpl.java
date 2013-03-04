@@ -1,9 +1,11 @@
 package mx.meido.jblog.post.dao.impl;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Repository;
 
@@ -79,7 +81,13 @@ public class PostDaoSqlImpl extends JdbcDaoSupport implements PostDao {
 	@Override
 	public Map<String, Object> getPost(long id) {
 		String sql = "select * from post where id = ? ";
-		return this.getJdbcTemplate().queryForMap(sql, id);
+		Map<String, Object> map = null;
+		try{
+			map = this.getJdbcTemplate().queryForMap(sql, id);
+		}catch(DataAccessException e){
+			
+		}
+		return map;
 	}
 
 }

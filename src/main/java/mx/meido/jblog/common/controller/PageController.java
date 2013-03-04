@@ -22,5 +22,9 @@ public class PageController {
 	public String showLogin(){
 		return "login";
 	}
+	@RequestMapping(value="/404.html")
+	public String show404(){
+		return "404";
+	}
 
 }

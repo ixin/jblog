@@ -23,6 +23,8 @@ public class PostController {
 	@RequestMapping(value="/p.do")
 	public String getPost(@RequestParam("id") long id, ModelMap modelMap){
 		Map<String, Object> post = postService.getPost(id);
+		if(post == null)
+			return "redirect:/404.html";
 		modelMap.put("post", post);
 		List<Post> toplist = postService.getPostFromAndLimitWithTimeDesc(0, 10, PostStage.PUBLISH.getStage());
 		List<Map<String, Object>> topposts = new ArrayList<Map<String, Object>>();
