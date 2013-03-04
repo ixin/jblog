@@ -11,9 +11,9 @@
 <meta name="Description" content="">
 <meta content="text/html; charset=UTF-8" http-equiv=Content-Type>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="style/front/css/bootstrap.min.css" rel="stylesheet" media="screen">
-<link href="style/front/css/bootstrap-responsive.min.css" rel="stylesheet">
-<link href="style/front/style.css" rel="stylesheet">
+<link href="${ctxPath}/style/front/css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="${ctxPath}/style/front/css/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="${ctxPath}/style/front/style.css" rel="stylesheet">
 </head>
 <body>
 	<div class="navbar navbar-inverse navbar-fixed-top">
@@ -22,10 +22,10 @@
 				<a class="btn btn-navbar" data-toggle="collapse"
 					data-target=".nav-collapse"> <span class="icon-bar"></span> <span
 					class="icon-bar"></span> <span class="icon-bar"></span>
-				</a> <a class="brand" href="<%=request.getContextPath() %>">小辛博客</a>
+				</a> <a class="brand" href="${ctxPath}">小辛博客</a>
 				<div class="nav-collapse collapse">
 					<ul class="nav">
-						<li><a href="<%=request.getContextPath() %>">首页</a></li>
+						<li><a href="${ctxPath}">首页</a></li>
 						<li><a href="#about">关于</a></li>
 						<li><a href="#contact">联系我</a></li>
 					</ul>
@@ -58,7 +58,7 @@
 		<div class="content">
 			<div class="page-header">
 				<h1>${post.title}</h1>
-				<div><span>作者：<a href="#">我</a>&nbsp;&nbsp;&nbsp;发布时间：&nbsp;${post.postTime}&nbsp;&nbsp;分类：&nbsp;<a href="#">默认</a> &nbsp;暂无评论</span></div>
+				<div><span>作者：<a href="#">${post.postuser}</a>&nbsp;&nbsp;&nbsp;发布时间：&nbsp;${post.postTime}&nbsp;&nbsp;分类：&nbsp;<a href="#">默认</a> &nbsp;评论：暂无</span></div>
 			</div>
 			<div class="container-fluid">
 				<div class="row-fluid">
@@ -74,15 +74,21 @@
 						<section>
 							<h3>热门文章</h3>
 							<ul>
-								<li><a href="javascript:void(0)">梦里桃花，伞下江南</a></li>
-
+								<c:forEach var="topTitle" items="${topTitle}">
+									<li><a href="${ctxPath}/post/${topTitle.id}/">${topTitle.title}</a></li>
+								</c:forEach>
 							</ul>
 						</section>
 						<section>
 							<h3>友情链接</h3>
 							<ul>
-								<li><a href="javascript:void(0)">Google.com</a></li>
-
+								<li><a href="http://www.google.com" target="_blank">Google.com</a></li>
+								<li><a href="javascript:void(0)" target="_blank">萌糖燃糖</a></li>
+								<li><a href="javascript:void(0)" target="_blank">糯米团团</a></li>
+								<li><a href="javascript:void(0)" target="_blank">木瓜博客</a></li>
+								<li><a href="http://www.ilovejava.net" target="_blank">ilovejava.net</a></li>
+								<li><a href="javascript:void(0)" target="_blank">游鱼技术站</a></li>
+								<li><a href="javascript:void(0)" target="_blank">简单生活</a></li>
 							</ul>
 						</section>
 					</aside>
@@ -110,7 +116,7 @@
       		</form>
   		</div>
 	</div>
-	<script src="script/jquery-1.8.0.min.js"></script>
-    <script src="script/front/js/bootstrap.min.js"></script>
+	<script src="${ctxPath}/script/jquery-1.8.0.min.js"></script>
+    <script src="${ctxPath}/script/front/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -24,12 +24,21 @@ public class PostController {
 	public String getPost(@RequestParam("id") long id, ModelMap modelMap){
 		Map<String, Object> post = postService.getPost(id);
 		modelMap.put("post", post);
+		List<Post> toplist = postService.getPostFromAndLimitWithTimeDesc(0, 10, PostStage.PUBLISH.getStage());
+		List<Map<String, Object>> topposts = new ArrayList<Map<String, Object>>();
+		for(Post p : toplist){
+			Map<String, Object> map = new HashMap<String,Object>();
+			map.put("id", p.getPostId());
+			map.put("title", p.getPostValue().getTitle());
+			topposts.add(map);
+		}
+		modelMap.addAttribute("topTitle", topposts);
 		return "post";
 	}
 	
 	@RequestMapping(value="/profile.html")
 	public String showProfile(ModelMap modelMap){
-		List<Post> list = postService.getPostFromAndLimitWithTimeDesc(0, 10, PostStage.PUBLISH.getStage());
+		List<Post> list = postService.getPostFromAndLimitWithTimeDesc(0, 15, PostStage.PUBLISH.getStage());
 		List<Map<String, Object>> posts = new ArrayList<Map<String, Object>>();
 		for(Post p : list){
 			Map<String, Object> map = new HashMap<String,Object>();
@@ -41,6 +50,15 @@ public class PostController {
 			posts.add(map);
 		}
 		modelMap.addAttribute("posts", posts);
+		List<Post> toplist = postService.getPostFromAndLimitWithTimeDesc(0, 10, PostStage.PUBLISH.getStage());
+		List<Map<String, Object>> topposts = new ArrayList<Map<String, Object>>();
+		for(Post p : toplist){
+			Map<String, Object> map = new HashMap<String,Object>();
+			map.put("id", p.getPostId());
+			map.put("title", p.getPostValue().getTitle());
+			topposts.add(map);
+		}
+		modelMap.addAttribute("topTitle", topposts);
 		return "profile";
 	}
 }

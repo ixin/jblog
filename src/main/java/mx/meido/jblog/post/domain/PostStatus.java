@@ -20,7 +20,7 @@ public class PostStatus implements Serializable{
 	}
 	
 	public static enum PostStage{
-		PUBLISH("publish"), DRAFT("draft");
+		PUBLISH("publish"), DRAFT("draft"), DEL("del");
 
 		private String stage;
 		public String getStage() {
