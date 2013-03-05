@@ -1,7 +1,6 @@
 package mx.meido.jblog.post.domain;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.HashMap;
 
 import mx.meido.jblog.user.model.UserInfo;
@@ -12,7 +11,7 @@ public class Post implements Serializable{
 	private PostStatus postStatus;
 	private PostValue postValue;
 	private UserInfo user;
-	
+	  
 	public long getPostId() { 
 		return postId;
 	}
@@ -25,7 +24,7 @@ public class Post implements Serializable{
 	public UserInfo getUser() {
 		return user;
 	}
-	
+	 
 	public static class PostBuilder{
 		private long postId;
 		private PostStatus postStatus;

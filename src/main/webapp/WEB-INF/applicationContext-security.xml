@@ -9,7 +9,7 @@
 	<http pattern="/script/**" security="none"/>
     <http pattern="/style/**" security="none"/>
 	<http auto-config="true">
-	    <intercept-url pattern="/admin/**" access="ROLE_Auth1"/>
+	    <intercept-url pattern="/admin/**" access="ROLE_ADMIN"/>
 		<form-login login-page="/login.html" authentication-failure-url="/login.html?error=true" default-target-url="/admin/frameMain.html" always-use-default-target="true" />
 	</http>
 

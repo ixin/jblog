@@ -1,6 +1,5 @@
 package mx.meido.jblog.post.dao.impl;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -11,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import mx.meido.jblog.post.dao.PostDao;
 import mx.meido.jblog.post.domain.Post;
+
 @Repository("postDao")
 public class PostDaoSqlImpl extends JdbcDaoSupport implements PostDao {
 
@@ -24,13 +24,13 @@ public class PostDaoSqlImpl extends JdbcDaoSupport implements PostDao {
 		Map<String, Object> post = this.getJdbcTemplate().queryForMap("SELECT * FROM post WHERE id > ? and postStage = ? ORDER BY ID ASC", fromId, postStage);
 		return post;
 	}
-
+ 
 	@Override
 	public Map<String, Object> getPreviousPost(long fromId, String postStage) {
 		Map<String, Object> post = this.getJdbcTemplate().queryForMap("SELECT * FROM post WHERE id > ? and postStage = ? ORDER BY ID DESC", fromId, postStage);
 		return post;
-	}
-
+	} 
+ 
 	@Override
 	public void save(Post post) {
 		String insert = "INSERT INTO post(postuser, title, content, summary, postTime, postStage) VALUES(?,?,?,?,?,?)";

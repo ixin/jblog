@@ -23,6 +23,9 @@
 	<bean id="postDao" class="mx.meido.jblog.post.dao.impl.PostDaoSqlImpl">
 	    <property name="dataSource" ref="dataSource"></property>
 	</bean>
+	<bean id="termsDao" class="mx.meido.jblog.terms.dao.impl.TermsDaoImpl">
+	    <property name="dataSource" ref="dataSource"></property>
+	</bean>
 	
 	<!-- 视图解析器  -->
     <bean id="viewResolver"

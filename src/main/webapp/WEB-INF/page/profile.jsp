@@ -26,8 +26,8 @@
 				<div class="nav-collapse collapse">
 					<ul class="nav">
 						<li class="active"><a href="${ctxPath}">首页</a></li>
-						<li><a href="#about">关于</a></li>
-						<li><a href="#contact">联系我</a></li>
+						<li><a href="${ctxPath}/about">关于</a></li>
+						<li><a href="${ctxPath}/contact">联系我</a></li>
 					</ul>
 					<ul class="nav pull-right">
 						<c:choose>
@@ -35,15 +35,15 @@
 								<li><a href="#" data-toggle="modal" data-target="#myLoginModal">登录</a></li>
 							</c:when>
 							<c:otherwise>
-								<li><a href="admin/frameMain.html" class="hidden-phone visible-tablet visible-desktop" >设置</a></li>
+								<li><a href="${ctxPath}/admin/frameMain.html" class="hidden-phone visible-tablet visible-desktop" >设置</a></li>
 								<li id="fat-menu" class="dropdown">
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user"></i><sec:authentication property="name"/><i class="icon-caret-down"></i></a>
 									<ul class="dropdown-menu">
-										<li><a tabindex="-1" href="admin/frameMain.html">我的账户</a></li>
+										<li><a tabindex="-1" href="${ctxPath}/admin/frameMain.html">我的账户</a></li>
 										<li class="divider"></li>
-										<li><a tabindex="-1" class="visible-phone" href="admin/frameMain.html">设置</a></li>
+										<li><a tabindex="-1" class="visible-phone" href="${ctxPath}/admin/frameMain.html">设置</a></li>
 										<li class="divider visible-phone"></li>
-										<li><a tabindex="-1" href="j_spring_security_logout">注销</a></li> 
+										<li><a tabindex="-1" href="${ctxPath}/j_spring_security_logout">注销</a></li> 
 									</ul>
 								</li>
 							</c:otherwise>
@@ -62,7 +62,7 @@
 					<c:forEach var="post" items="${posts}">
 						<div class="post-list">
 							<a href="${ctxPath}/post/${post.id}/" class="profile-title" >${post.title}</a>
-							<div><span>作者：<a href="#">${post.own}</a>&nbsp;&nbsp;&nbsp;发布时间：&nbsp;${post.time}&nbsp;&nbsp;分类：&nbsp;<a href="#">默认</a> &nbsp;&nbsp;评论：暂无</span></div>
+							<div style="margin-top:10px;"><span>作者：<a href="#">${post.own}</a>&nbsp;&nbsp;&nbsp;发布时间：&nbsp;${post.time}&nbsp;&nbsp;分类：&nbsp;<a href="#">默认</a> &nbsp;&nbsp;评论：暂无</span></div>
 						</div>
 						<br />
 						<div>${post.content}</div>

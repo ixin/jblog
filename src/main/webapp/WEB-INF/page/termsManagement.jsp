@@ -1,28 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/common/taglibs.jsp"%>
-<c:set var="pageName" value="postManagementList" />
+<c:set var="pageName" value="termsManagement${type}" />
 <table id="${pageName }datagrid" toolbar="#${pageName }toolbar"></table>
 <div id="${pageName }toolbar"
 	style="background:url(${ctxPath}/styles/themes/default/images/bg.gif) top repeat-x #d9ebfb;">
-	<span style="margin-left:20px;margin-right:4px;">文章名：</span><input
-		id="${pageName }username" class="combo-textl" maxlength="18"
+	<span style="margin-left:20px;margin-right:4px;">名称：</span><input
+		id="${pageName }termsname" class="combo-textl" maxlength="18"
 		style="border:1px solid #A4BED4;width:150px;" />
-	<span style="margin-left:20px;margin-right:4px;">作者：</span><input
-		id="${pageName }email" class="combo-textl" maxlength="50"
-		style="border:1px solid #A4BED4;width:150px;margin-right:10px;" />
-	<span style="margin-left:20px;">状态：</span>
-	<select>
-		<option>全部</option>
-		<option>已发布</option>
-		<option>私密</option>
-		<option>回收站</option>
-	</select>
-	<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'"
-		onclick="${pageName }reloadDataGridWithSearchValue();">查询</a>
-	<a href="postManagementNewPost.html" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true"
-		onclick="javascript:openTab(this);return false;" tabtitle="写文章" >写文章</a>
-	<label> | </label>
+	<a href="termsManagementAdd.do?type=${type}" class="easyui-linkbutton" data-options="iconCls:'icon-add'"
+		onclick="${pageName }add(this);return false;">添加</a>
 	<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-no',plain:true"
 		onclick="return false;" >批量删除</a>
 </div>
@@ -37,31 +24,17 @@ $(document).ready(function(){
 		fitColumns: true,
 		loadMsg: "正在加载，请稍候...",
 		singleSelect: true,
-		url: "postManagementList.do",
+		url: 'termsManagement.do?type=${type}',
 		selectOnCheck: false,
 		checkOnSelect: false,
 		columns:[[
 			{field:"ck", checkbox:true},
-			{field:"title",title:"标题",align:"left",width:200},
-			{field:"nickname",title:"作者",align:"center",width:80},
-			{field:"part",title:"分类目录",align:"center",width:80},
-			{field:"pl",title:"评论数",align:"center",width:60},
-			{field:"posttime",title:"日期",align:"center",width:100,
+			{field:"terms_name",title:"名称",align:"left",width:200},
+			{field:"terms_summary",title:"描述",align:"center",width:100},
+			{field:"part",title:"文章",align:"center",width:100},
+			{field:"terms_id",title:"操作",align:"center",width:100,
 				formatter: function(value,rowData,rowIndex){
-					var date = new Date(value);
-					var year = date.getFullYear();  
-        			var month = ("0" + (date.getMonth() + 1)).slice(-2);  
-        			var day = ("0" + date.getDate()).slice(-2);  
-        			var h = ("0" + date.getHours()).slice(-2);  
-        			var m = ("0" + date.getMinutes()).slice(-2);  
-        			var s = ("0" + date.getSeconds()).slice(-2);   
-					return year + "-" + month + "-" + day + "&nbsp;" + h + ":" + m + ":" + s;
-				}	
-			},
-			{field:"poststage",title:"状态",align:"center",width:60},
-			{field:"id",title:"操作",align:"center",width:100,
-				formatter: function(value,rowData,rowIndex){
-					return "<a href='../post/"+value+"/' target='_blank' >查看</a> | <a href='##' onclick='return false;' >编辑</a> | <a href='#' onclick='return false;' ><span style='color:red;'>移至回收站</span></a>";
+					return "<a href='#' target='_blank' >查看</a> | <a href='##' onclick='return false;' >编辑</a> | <a href='#' onclick='return false;' ><span style='color:red;'>删除</span></a>";
 				}
 			}
 		]],
@@ -103,8 +76,32 @@ $(document).ready(function(){
 });
 function ${pageName }reloadDataGridWithSearchValue() {
 	$("#${pageName}datagrid").datagrid("load",{
-		username: $("#${pageName}username").val()
+		termsname: $("#${pageName}termsname").val()
     });
+}
+function ${pageName}add(o){
+	var href = $(o).attr("href");
+	var termsname = $("#${pageName}termsname").val();
+	$.ajax({
+		url: href,
+		type: 'POST',
+		data: 'termsname='+termsname,
+		timeout: 20000,
+		success: function(data, textStatus){
+			if(textStatus == 'success'){
+				if(data == 'success'){
+					showMsg('操作成功');
+					${pageName }reloadDataGridWithSearchValue();
+				}else {
+					showMsg('似乎添加出了问题,再来一遍试试吧。。。 > .<');
+				}
+				
+			}
+		},
+		error: function(){
+	    	showMsg("发生错误，请重试或联系系统管理员！");
+    	}
+	});
 }
 
 </script>

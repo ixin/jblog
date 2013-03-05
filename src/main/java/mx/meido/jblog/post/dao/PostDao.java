@@ -15,3 +15,4 @@ public interface PostDao {
 	public void changePostStage(long id, String postStage);
 	public List<Map<String, Object>> getPostFromAndLimitWithTimeDesc(long from, int limit, String postStage);
 }
+   

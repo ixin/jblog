@@ -8,7 +8,7 @@ public class PostStatus implements Serializable{
 	private PostStage postStage;
 	public HashMap<String, String> getPostMeta() {
 		return postMeta;
-	} 
+	}
 	public void setPostMeta(HashMap<String, String> postMeta) {
 		this.postMeta = postMeta;
 	}

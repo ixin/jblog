@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class PostController {
 	@Autowired
 	private PostService postService;
-	
+	 
 	@RequestMapping(value="/p.do")
 	public String getPost(@RequestParam("id") long id, ModelMap modelMap){
 		Map<String, Object> post = postService.getPost(id);

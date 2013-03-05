@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import mx.meido.jblog.post.domain.Post;
-import mx.meido.jblog.post.domain.PostStatus.PostStage;
 import mx.meido.jblog.post.repository.PostRepository;
 import mx.meido.jblog.post.service.PostService;
 @Service("postService")

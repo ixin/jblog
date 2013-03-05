@@ -38,24 +38,24 @@ public class UrlMapping implements Filter {
 		HttpServletRequest req = ((HttpServletRequest)request);
 		HttpServletResponse res = ((HttpServletResponse)response);
 		String cxtPath = req.getContextPath();
-		System.out.println(req.getContextPath() + " ----- " + req.getServletPath() + " ---- " + req.getParameterNames().hasMoreElements());
+		System.out.println(req.getServletPath() + " ---- " + req.getParameterNames().hasMoreElements());
 		String url = req.getServletPath();
 		String[] url_params = url.split("/");
 		//分析url
 		if(!req.getParameterNames().hasMoreElements()){
-			if(url_params[1].equals("post")){
+			if(url_params[1].equals("post") && url_params.length == 3){
 				req.getRequestDispatcher("/p.do?id="+url_params[2]).forward(req, res);
-			}else if(url_params[1].equals("tag")){
+			}else if(url_params[1].equals("tag") && url_params.length == 3){
 				req.getRequestDispatcher("/t.do?id="+url_params[2]).forward(req, res);
-			}else if(url_params[1].equals("page")){
+			}else if(url_params[1].equals("page") && url_params.length == 3){
 				req.getRequestDispatcher("/page.do?id="+url_params[2]).forward(req, res);
 			} else {
 				chain.doFilter(request, response);
 			}
 		}else {
-			if(url_params[1].equals("admin")){
+			if(url_params[1].equals("admin") || url_params[1].equals("login.html")){
 				chain.doFilter(request, response);
-			}else{
+			} else {
 				res.sendRedirect(cxtPath+"/404.html");
 			}
 		}

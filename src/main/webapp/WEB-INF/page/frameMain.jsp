@@ -33,6 +33,8 @@
 				<ul id="tt2" class="easyui-tree topMenuUl" data-options="animate:true,dnd:false">
 					<li><a href="postManagementList.html" tabtitle="所有文章" id="allpost">所有文章</a></li>
 					<li><a href="postManagementNewPost.html" tabtitle="写文章" >写文章</a></li>
+					<li><a href="termsManagement.html?type=category" tabtitle="分类目录" >分类目录</a></li>
+					<li><a href="termsManagement.html?type=post_tag" tabtitle="标签" >标签</a></li>
 				</ul>
 			</div>
 			<div title="评论管理" data-options="" style="padding:10px;font-size:14px;">

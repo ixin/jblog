@@ -38,7 +38,7 @@ public class PostRepository {
 		Date date = new Date(d.getTime());
 		pb.setNewPostValue((String)rs.get("title"), (String)rs.get("content"), (String)rs.get("summary"), date, u);
 		return pb.build();
-	}
+	} 
 	public Post getPreviousPost(Post post){
 		long fromId = post.getPostId();
 		String postStageString = PostStage.PUBLISH.getStage();

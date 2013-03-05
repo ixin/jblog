@@ -16,6 +16,7 @@ import mx.meido.jblog.post.domain.Post.PostBuilder;
 import mx.meido.jblog.post.domain.PostStatus.PostStage;
 import mx.meido.jblog.post.domain.PostValue;
 import mx.meido.jblog.post.service.PostService;
+import mx.meido.jblog.terms.service.TermsService;
 import mx.meido.jblog.user.model.UserInfo;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -24,6 +25,7 @@ import net.sf.json.JsonConfig;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,12 +33,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class PostManagementController {
 	@Autowired
 	private PostService postService;
+	@Autowired
+	private TermsService termsService;
 	
 	@RequestMapping(value="/admin/postManagementList.html", method=RequestMethod.GET)
 	public String showPostManagementList(){
 		return "postManagementList";
 	}
-	
+	 
 	@RequestMapping(value="/admin/postManagementList.do", method=RequestMethod.POST)
 	public String getPostManagementList(HttpServletResponse response, HttpServletRequest request) throws IOException{
 		JSONObject jsonObj = new JSONObject();
@@ -48,7 +52,9 @@ public class PostManagementController {
 	}
 	
 	@RequestMapping(value="/admin/postManagementNewPost.html", method=RequestMethod.GET)
-	public String showPostManagementNewPost(){
+	public String showPostManagementNewPost(ModelMap modelMap){
+		List<Map<String, Object>> list = termsService.getAllCategoryTerms();
+		modelMap.addAttribute("categorys", list);
 		return "postManagementNewPost";
 	}
 	
@@ -56,9 +62,12 @@ public class PostManagementController {
 	public String savePostManagementNewPost(HttpServletResponse response, HttpServletRequest request, @RequestParam("type") String type) throws IOException{
 		PrintWriter pw = response.getWriter();
 		String title = request.getParameter("title");
+		String alias = request.getParameter("alias");
+		String tags = request.getParameter("tags");
+		String[] category = request.getParameterValues("category");
 		String content = request.getParameter("postContent");
 		if(StringUtils.isNotBlank(content) && StringUtils.isNotBlank(title) && StringUtils.isNotBlank(type)){
-			UserInfo u = UserUtil.getUserInfo();
+			UserInfo u = UserUtil.getUserInfo();//获取当前用户信息
 			if(u == null){
 				response.sendRedirect("/");
 			}
@@ -112,5 +121,5 @@ public class PostManagementController {
 		}
 		
 	}
-	
+
 }

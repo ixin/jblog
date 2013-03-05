@@ -8,8 +8,29 @@
 	<input class="${pageName}suojin" type="text" id="title" name="title" title="此处键入标题" autocomplete="off" style="width:500px;margin-bottom:12px;"/>
 	<a id="${pageName}changeOption" href="javascript:;" onclick="return false;" >更多选项...</a>
 	<div id="${pageName}options" class="${pageName}suojin" style="display:none;">
-		<input type="text" /><a href="#" class="easyui-linkbutton" onclick="javascript:void(0);return false;">更改1</a><br />
-		<input type="text" /><a href="#" class="easyui-linkbutton" onclick="javascript:void(0);return false;">更改2</a><br /><br />
+	<table>
+		<tr>
+			<td align="right">文章别名：</td><td><input type="text" name="alias" class="${pageName}xuanxiang" /></td>
+		</tr>
+		<tr>
+			<td align="right">标签：</td><td><input type="text" name="tags" class="${pageName}xuanxiang" /></td>
+		</tr>
+		<tr>
+			<td align="right">分类目录：</td>
+			<td>
+			<table>
+				<tr>
+			<c:forEach var="category" items="${categorys}" varStatus="s">
+					<td><input type="checkbox" name="category"  value="${category.terms_id }">${category.terms_name }</td>
+					<c:if test="${s.count%2==0}"></tr><tr></c:if>			
+			</c:forEach>
+				</tr>
+				<tr><td colspan="2"><input type="checkbox" name="category" checked="checked" value="0">默认</td></tr>
+			</table>
+			</td>
+		</tr>
+	</table>
+	<br />
 	</div>
 	<div id="${pageName}post" class="${pageName}suojin">
 		<textarea id="postContent" name="postContent" style="width:97%;height:400px;visibility:hidden;"></textarea><br />
@@ -29,6 +50,7 @@
 .${pageName}suojin{margin-left:30px;}
 #${pageName}tip{height:50px;line-height:50px;color:#0E2D5F;font-size:medium;font-weight:bold;}
 #${pageName}changeOption{margin-left:10px;}
+.${pageName}xuanxiang{width:400px;}
 </style>
 <script type="text/javascript">
 var editor;

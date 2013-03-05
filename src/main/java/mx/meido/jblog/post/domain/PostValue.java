@@ -12,7 +12,7 @@ public class PostValue{
 		this.summary = summary;
 		this.postTime = postTime;
 	} 
-	
+	 
 	public String getTitle() {
 		return title;
 	}
