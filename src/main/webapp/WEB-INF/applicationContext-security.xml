@@ -5,7 +5,7 @@
                         http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 
 
-	<debug />
+	<!-- <debug /> -->
 	<http pattern="/script/**" security="none"/>
     <http pattern="/style/**" security="none"/>
 	<http auto-config="true">

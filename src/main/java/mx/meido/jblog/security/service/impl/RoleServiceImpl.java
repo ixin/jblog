@@ -10,7 +10,6 @@ import mx.meido.jblog.security.service.RoleService;
 public class RoleServiceImpl implements RoleService{
 	@Autowired
 	private RoleDao roleDao;
-	@Override
 	public Role getRoleById(int roleid) {
 		return roleDao.getRoleById(roleid);
 	}

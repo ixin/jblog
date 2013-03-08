@@ -11,7 +11,6 @@ import org.springframework.stereotype.Repository;
 @Repository("termsDao")
 public class TermsDaoImpl extends JdbcDaoSupport implements TermsDao {
 
-	@Override
 	public int saveTerms(Terms terms) {
 		String sql = "insert into terms(terms_name, terms_summary, terms_parent_id, terms_type) values(?, ?, ?, ?) ";
 		Object[] obj = new Object[4];
@@ -22,7 +21,6 @@ public class TermsDaoImpl extends JdbcDaoSupport implements TermsDao {
 		return this.getJdbcTemplate().update(sql, obj); 
 	}
 
-	@Override
 	public List getTerms(int fromResultCount, int resultCountPerPage,
 			String type) {
 		StringBuffer sb = new StringBuffer("select * from terms where terms_type = ? ");
@@ -41,7 +39,6 @@ public class TermsDaoImpl extends JdbcDaoSupport implements TermsDao {
 		return this.getJdbcTemplate().queryForList(sb.toString(), obj);
 	}
 
-	@Override
 	public int getTermsCount(String type) {
 		String sql = "select count(*) from terms where terms_type = ? ";
 		return this.getJdbcTemplate().queryForInt(sql, type);

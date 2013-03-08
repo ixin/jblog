@@ -27,7 +27,6 @@ public class UserInfo implements UserDetails,Serializable{
 	private boolean isCredentialsNonExpired;
 	private boolean isEnabled;
 
-	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		if (authorities == null) {
 			authorities = new HashSet<SimpleGrantedAuthority>();
@@ -38,32 +37,26 @@ public class UserInfo implements UserDetails,Serializable{
 		return authorities;
 	}
 
-	@Override
 	public String getPassword() {
 		return this.password;
 	}
 
-	@Override
 	public String getUsername() {
 		return this.username;
 	}
 
-	@Override
 	public boolean isAccountNonExpired() {
 		return this.isAccountNonExpired;
 	}
 
-	@Override
 	public boolean isAccountNonLocked() {
 		return this.isAccountNonLocked;
 	}
 
-	@Override
 	public boolean isCredentialsNonExpired() {
 		return this.isCredentialsNonExpired;
 	}
 
-	@Override
 	public boolean isEnabled() {
 		return this.isEnabled;
 	}

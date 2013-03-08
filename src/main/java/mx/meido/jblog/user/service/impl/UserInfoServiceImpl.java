@@ -15,12 +15,11 @@ import mx.meido.jblog.user.service.UserInfoService;
 public class UserInfoServiceImpl implements UserInfoService{
 	@Autowired
 	private UserInfoDao userInfoDao;
-	@Override
+	
 	public UserDetails loadUserByUsername(String username)
 			throws UsernameNotFoundException {
 		return userInfoDao.loadUserByUsername(username);
 	}
-	@Override
 	public List<Map<String, Object>> getUserInfos(UserInfo userinfo, int fromResultCount,
 			int resultCountPerPage) {
 		List<Map<String, Object>> list =  userInfoDao.getUserInfos(userinfo, fromResultCount, resultCountPerPage);
@@ -31,11 +30,9 @@ public class UserInfoServiceImpl implements UserInfoService{
 		}
 		return list;
 	}
-	@Override
 	public int getUserInfosCount(UserInfo userinfo) {
 		return userInfoDao.getUserInfosCount(userinfo);
 	}
-	@Override
 	public Map<String, Object> getUserInfoByID(int id) {
 		Map<String, Object> userinfo = userInfoDao.getUserInfoByID(id);
 		if(userinfo != null){
@@ -44,7 +41,6 @@ public class UserInfoServiceImpl implements UserInfoService{
 		}
 		return userinfo;
 	}
-	@Override
 	public Map<String, Object> getRoleByRoleID(int roleId) {
 		return userInfoDao.getRoleByRoleID(roleId);
 	}

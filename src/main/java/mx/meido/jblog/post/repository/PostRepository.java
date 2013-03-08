@@ -31,7 +31,7 @@ public class PostRepository {
 		
 		Map<String, Object> rs = postDao.getNextPost(fromId, postStageString);
 		Post.PostBuilder pb = new PostBuilder();
-		pb.setPostId((long) rs.get("id"));
+		pb.setPostId(Long.parseLong(rs.get("id").toString()));
 		pb.setPostStatus(null, PostStage.PUBLISH);
 		UserInfo u = (UserInfo) userInfoDao.loadUserByUsername((String) rs.get("postuser"));
 		java.sql.Date d = (java.sql.Date) rs.get("posttime");
@@ -49,7 +49,7 @@ public class PostRepository {
 		UserInfo u = (UserInfo) userInfoDao.loadUserByUsername((String) rs.get("postuser"));
 		java.sql.Date d = (java.sql.Date) rs.get("postTime");
 		Date date = new Date(d.getTime());
-		pb.setPostId((long) rs.get("id"))
+		pb.setPostId(Long.parseLong(rs.get("id").toString()))
 			.setPostStatus(null, PostStage.PUBLISH)
 			.setNewPostValue((String)rs.get("title"), (String)rs.get("content"), (String)rs.get("summary"), date, u);
 		return pb.build();
@@ -80,7 +80,7 @@ public class PostRepository {
 			}
 			UserInfo u = (UserInfo) userInfoDao.loadUserByUsername((String) rs.get("postuser"));
 			java.util.Date date = new java.util.Date(((java.sql.Timestamp) (rs.get("posttime"))).getTime());
-			pb.setPostId((long) rs.get("id"))
+			pb.setPostId(Long.parseLong(rs.get("id").toString()))
 				.setNewPostValue((String)rs.get("title"), (String)rs.get("content"), (String)rs.get("summary"), date, u);
 			posts.add(pb.build());
 		}

@@ -18,7 +18,7 @@ import mx.meido.jblog.user.model.UserInfo;
 public class UserInfoDaoImpl extends JdbcDaoSupport implements UserInfoDao{
 	@Autowired
 	private RoleDao roleDao;
-	@Override
+	
 	public UserDetails loadUserByUsername(String username)
 			throws UsernameNotFoundException {
 		String sql = "select * from userinfo where username = ?";
@@ -33,7 +33,6 @@ public class UserInfoDaoImpl extends JdbcDaoSupport implements UserInfoDao{
 		
 		return ui;
 	}
-	@Override
 	public List<Map<String, Object>> getUserInfos(UserInfo userinfo, int fromResultCount,
 			int resultCountPerPage) {
 		StringBuffer sb = new StringBuffer("select * from userinfo ui where 1 = 1 ");
@@ -66,7 +65,6 @@ public class UserInfoDaoImpl extends JdbcDaoSupport implements UserInfoDao{
 		//执行查询
 		return this.getJdbcTemplate().queryForList(sb.toString(), params);
 	}
-	@Override
 	public int getUserInfosCount(UserInfo userinfo) {
 		StringBuffer sb = new StringBuffer("select count(*) from userinfo ui where 1 = 1 ");
 		int paramsSize = 0;
@@ -92,18 +90,15 @@ public class UserInfoDaoImpl extends JdbcDaoSupport implements UserInfoDao{
 		//执行查询
 		return this.getJdbcTemplate().queryForInt(sb.toString(), params);
 	}
-	@Override
 	public Map getRoleByRoleID(int roleId) {
 		String sql = "select * from role where id = ?";
 		return this.getJdbcTemplate().queryForMap(sql, new Object[]{roleId});
 	}
-	@Override
 	public int getPostCountByUsername(String username) {
 		//TODO 表名 。。。文章表
 		String sql = "select count(*) from post where postuser = ?";
 		return this.getJdbcTemplate().queryForInt(sql, new Object[]{username});
 	}
-	@Override
 	public Map getUserInfoByID(int id) {
 		String sql = "select * from userinfo where id = ?";
 		return this.getJdbcTemplate().queryForMap(sql, new Object[]{id});

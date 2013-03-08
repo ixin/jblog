@@ -14,23 +14,19 @@ public class MsgBookServiceImpl implements MsgBookService {
 	@Autowired
 	private MsgBookDao msgBookDao;
 
-	@Override
 	public List<Map<String, Object>> getMsgs() {
 		return msgBookDao.getMsgs();
 	}
 
-	@Override
 	public Message getMsgByID(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public int saveMsg(Message msg) {
 		return msgBookDao.saveMsg(msg);
 	}
 
-	@Override
 	public int delMsgByID(String id) {
 		// TODO Auto-generated method stub
 		return 0;
